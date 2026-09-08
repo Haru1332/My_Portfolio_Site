@@ -51,6 +51,7 @@ type WorksSectionProps = {
 
 export function WorksSection({ id, index, kicker, heading, countLabel, projects, track }: WorksSectionProps) {
   const [activeProject, setActiveProject] = useState<Project>(projects[0]);
+  const [mobileSelected, setMobileSelected] = useState<Project>(projects[0]);
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const lastTrigger = useRef<HTMLElement | null>(null);
@@ -86,6 +87,23 @@ export function WorksSection({ id, index, kicker, heading, countLabel, projects,
         <div className={styles.count}><strong>{String(projects.length).padStart(2, "0")}</strong><span>{countLabel}</span></div>
       </header>
 
+      <div className={styles.mobileFeature}>
+        <p><span>Now Selected</span><small>{mobileSelected.category}</small></p>
+        <button
+          type="button"
+          className={styles.mobileStage}
+          onClick={(event) => openProject(mobileSelected, event)}
+          aria-label={`${mobileSelected.title} 상세 보기`}
+        >
+          <ProjectVisual project={mobileSelected} />
+          <span className={styles.mobileStageInfo}>
+            <small>{mobileSelected.category}</small>
+            <strong>{mobileSelected.shortTitle}</strong>
+            <span>{mobileSelected.role}</span>
+          </span>
+        </button>
+      </div>
+
       <div className={styles.projectGrid} style={{ "--rows": Math.max(projects.length - 1, 1) } as React.CSSProperties}>
         {projects.map((project) => (
           <button
@@ -93,7 +111,11 @@ export function WorksSection({ id, index, kicker, heading, countLabel, projects,
             type="button"
             className={`${styles.projectCard} ${project.featured ? styles.featuredCard : styles.secondaryCard}`}
             aria-label={`${project.title} 상세 보기`}
-            onClick={(event) => openProject(project, event)}
+            aria-current={mobileSelected.id === project.id ? "true" : undefined}
+            onClick={(event) => {
+              if (window.matchMedia("(max-width: 1024px)").matches) setMobileSelected(project);
+              else openProject(project, event);
+            }}
           >
             <ProjectVisual project={project} />
             <span className={styles.projectInfo}>
