@@ -12,15 +12,6 @@ export function CompositionSection() {
         {Array.from({ length: KEY_COUNT }, (_, i) => <i key={i} data-sharp={[1, 3, 6, 8, 10].includes(i % 12) ? "true" : undefined} />)}
       </div>
       <div className={styles.compositionLayout}>
-        <a
-          className={styles.compositionLogo}
-          href={composition.url}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`${composition.channel} 유튜브 채널 방문`}
-        >
-          <Image src={assetPath("/assets/composition/byeolsua-logo.jpg")} alt={`${composition.channel} 로고`} fill sizes="(max-width: 1024px) 140px, 240px" />
-        </a>
         <div className={styles.compositionContent}>
           <p className={styles.kicker}><span>05</span> Composition</p>
           <h2 id="composition-title">{composition.channel}</h2>
@@ -30,6 +21,15 @@ export function CompositionSection() {
             유튜브 채널 방문 <span>↗</span>
           </a>
         </div>
+        <a
+          className={styles.compositionLogo}
+          href={composition.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${composition.channel} 유튜브 채널 방문`}
+        >
+          <Image src={assetPath("/assets/composition/byeolsua-logo.jpg")} alt={`${composition.channel} 로고`} fill sizes="(max-width: 1024px) 140px, 240px" />
+        </a>
       </div>
     </section>
   );
