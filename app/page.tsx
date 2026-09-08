@@ -1,9 +1,9 @@
+import { AiWorksSection } from "@/components/AiWorksSection";
 import { CareerSection } from "@/components/CareerSection";
 import { CompositionSection } from "@/components/CompositionSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { PracticeSection } from "@/components/PracticeSection";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { WorksSection } from "@/components/WorksSection";
 import { aiProjects, soundProjects } from "@/content/portfolio";
@@ -18,14 +18,13 @@ export default function Home() {
       <main>
         <Hero />
         <CareerSection />
-        <WorksSection
+        <AiWorksSection
           id="ai-works"
           index="03"
           kicker="AI · AX Works"
           heading="AI · AX 작업"
-          countLabel={<>AI · AX<br />Engineering</>}
+          countLabel={<>AI · AX<br />Case Studies</>}
           projects={aiProjects}
-          track="ai"
         />
         <WorksSection
           id="sound-works"
@@ -37,7 +36,6 @@ export default function Home() {
           track="sound"
         />
         <CompositionSection />
-        <PracticeSection />
         <ContactSection />
       </main>
     </>

@@ -9,7 +9,6 @@ const navigation = [
   ["ai-works", "AI · AX"],
   ["sound-works", "Sound Design"],
   ["composition", "Composition"],
-  ["practice", "Practice"],
   ["contact", "Contact"],
 ] as const;
 

@@ -34,6 +34,7 @@ export type Project = {
   confidential?: boolean;
   confidentialNote?: string;
   featured?: boolean;
+  tools?: ToolkitTool[];
 };
 
 export const careers: Career[] = [
@@ -179,7 +180,8 @@ export const aiProjects: Project[] = [
     tracks: ["ai"],
     thumbnail: "/assets/toolkit/willa-toolkit-hub.png",
     summary:
-      "원고 도우미·오디오 도우미·순위 도우미·프롬프트 도우미 4개 도구로 구성된 사내 제작 지원 툴킷입니다. 반복되는 제작 공정을 직접 관찰하고 자동화했습니다.",
+      "오디오 제작 현장에서 사운드 PD와 엔지니어가 반복적으로 수행하는 공정을 직접 관찰하고, Python 기반 도구와 AI 코딩 어시스턴트로 단계별 자동화한 사내 제작 지원 툴킷입니다. 원고와 녹음본 같은 민감한 제작 데이터가 외부로 나가지 않도록 로컬 실행을 기본 원칙으로 두었습니다.",
+    tools: productionToolkit,
     featured: true,
   },
   {
@@ -204,6 +206,11 @@ export const aiProjects: Project[] = [
     role: "Pipeline Design · Prototype Development",
     tracks: ["ai"],
     thumbnail: "/assets/pipeline/onscript-annotation.jpg",
+    gallery: [
+      "/assets/pipeline/onair-scheduler.jpg",
+      "/assets/pipeline/onscript-annotation.jpg",
+      "/assets/pipeline/oncue-dashboard.jpg",
+    ],
     summary:
       "소싱부터 오디오북 초벌 편집, BGM·효과음·목소리 변환까지 이어지는 6단계 AX 파이프라인을 설계해 회사에 제안했습니다. 그중 OnAir(스케줄·현황) · OnScript(원고 정본화) · OnCue(초벌 자동 편집) 3단계는 상세 설계와 프로토타입 개발까지 직접 완료했고, 인력·장비·구독료 예산안까지 포함한 승인 요청서를 작성했습니다.",
   },
@@ -216,18 +223,6 @@ export const aiProjects: Project[] = [
     role: "AI Voice · Sound Design · Mix",
     tracks: ["ai", "sound"],
     youtubeUrl: "https://youtu.be/tyBvB5WCNko",
-  },
-  {
-    id: "netmarble-voice-ai-confidential",
-    order: "05",
-    title: "넷마블 · 음성 AI 데이터·모델 품질 실무",
-    shortTitle: "음성 AI 데이터·모델 품질 실무",
-    category: "AI Audio R&D",
-    role: "Model QC · Data Curation",
-    tracks: ["ai"],
-    confidential: true,
-    confidentialNote:
-      "TTS·VC·Singing Voice 결과물의 발음 불안정, 아티팩트, 톤 일관성을 진단하고 연구진과 개선 방향을 논의했습니다. 사내 프로젝트 특성상 원본 자료는 비공개입니다.",
   },
 ];
 

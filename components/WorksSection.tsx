@@ -6,22 +6,13 @@ import type { MouseEvent, ReactNode } from "react";
 import type { Project, Track } from "@/content/portfolio";
 import { assetPath } from "@/lib/asset-path";
 import { getYouTubeEmbedUrl, getYouTubeThumbnailUrl } from "@/lib/youtube";
+import { TrackBadge } from "@/components/TrackBadge";
 import styles from "@/app/page.module.css";
-
-const trackLabel: Record<Track, string> = { ai: "AI", sound: "Sound" };
 
 function projectThumbnail(project: Project) {
   if (project.thumbnail) return project.thumbnail;
   if (project.youtubeUrl) return getYouTubeThumbnailUrl(project.youtubeUrl) ?? undefined;
   return undefined;
-}
-
-function TrackBadge({ tracks }: { tracks: Track[] }) {
-  return (
-    <span className={styles.trackBadge}>
-      {tracks.map((track) => <span key={track} data-track={track}><i />{trackLabel[track]}</span>)}
-    </span>
-  );
 }
 
 function ProjectVisual({ project }: { project: Project }) {
