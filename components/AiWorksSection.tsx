@@ -38,12 +38,13 @@ export function AiWorksSection({ id, index, kicker, heading, countLabel, project
 function CaseStudyItem({ project }: { project: Project }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const images = project.gallery ?? (project.thumbnail ? [project.thumbnail] : []);
+  const isMulti = images.length > 1;
   const embedUrl = project.youtubeUrl ? getYouTubeEmbedUrl(project.youtubeUrl) : null;
   const videoThumb = project.youtubeUrl ? getYouTubeThumbnailUrl(project.youtubeUrl) : null;
 
   return (
     <article className={styles.caseStudyItem}>
-      <div className={`${styles.caseStudyMedia} ${images.length > 1 ? styles.caseStudyMediaMulti : ""}`}>
+      <div className={`${styles.caseStudyMedia} ${isMulti ? styles.caseStudyMediaMulti : ""}`}>
         {embedUrl ? (
           isPlaying ? (
             <iframe
@@ -65,9 +66,10 @@ function CaseStudyItem({ project }: { project: Project }) {
             </button>
           )
         ) : (
-          images.map((src) => (
+          images.map((src, i) => (
             <div key={src} className={styles.caseStudyMediaItem}>
               <Image src={assetPath(src)} alt="" fill sizes="(max-width: 1024px) 100vw, 66vw" />
+              {project.galleryLabels?.[i] && <span className={styles.caseStudyMediaLabel}>{project.galleryLabels[i]}</span>}
             </div>
           ))
         )}

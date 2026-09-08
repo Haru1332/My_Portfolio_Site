@@ -30,6 +30,7 @@ export type Project = {
   youtubeUrl?: string;
   thumbnail?: string;
   gallery?: string[];
+  galleryLabels?: string[];
   summary?: string;
   confidential?: boolean;
   confidentialNote?: string;
@@ -194,6 +195,7 @@ export const aiProjects: Project[] = [
     tracks: ["ai"],
     thumbnail: "/assets/toolkit/reaper-track-placement.png",
     gallery: ["/assets/toolkit/reaper-track-placement.png", "/assets/toolkit/reaper-full-timeline.png"],
+    galleryLabels: ["캐릭터별 트랙 배치", "전체 타임라인"],
     summary:
       "오디오북 녹음 세션을 위해 Reaper 내부에서 동작하는 Lua·Python 스크립트를 직접 개발했습니다. 원고를 파싱하고 어노테이션으로 캐릭터를 구분해 트랙을 나누고, 각 대사 위치에 빈 아이템을 미리 배치합니다. 녹음이 진행되면 해당 아이템이 실제 녹음 파일로 자동 교체되고, 아직 녹음되지 않은 빈 아이템들은 뒤로 자동 밀려나며 정렬을 유지합니다. 이 밖에도 여러 리퍼 편의 기능을 스크립트로 구현해 적용했습니다.",
   },
@@ -211,6 +213,7 @@ export const aiProjects: Project[] = [
       "/assets/pipeline/onscript-annotation.jpg",
       "/assets/pipeline/oncue-dashboard.jpg",
     ],
+    galleryLabels: ["OnAir · 스케줄 관리", "OnScript · 원고 정본화", "OnCue · 초벌 자동 편집"],
     summary:
       "소싱부터 오디오북 초벌 편집, BGM·효과음·목소리 변환까지 이어지는 6단계 AX 파이프라인을 설계해 회사에 제안했습니다. 그중 OnAir(스케줄·현황) · OnScript(원고 정본화) · OnCue(초벌 자동 편집) 3단계는 상세 설계와 프로토타입 개발까지 직접 완료했고, 인력·장비·구독료 예산안까지 포함한 승인 요청서를 작성했습니다.",
   },
