@@ -11,19 +11,25 @@ export function CompositionSection() {
       <div className={styles.compositionKeys} aria-hidden="true">
         {Array.from({ length: KEY_COUNT }, (_, i) => <i key={i} data-sharp={[1, 3, 6, 8, 10].includes(i % 12) ? "true" : undefined} />)}
       </div>
-      <div className={styles.compositionContent}>
-        <p className={styles.kicker}><span>05</span> Composition</p>
-        <div className={styles.compositionHead}>
-          <span className={styles.compositionAvatar}>
-            <Image src={assetPath("/assets/composition/byeolsua-logo.jpg")} alt="" fill sizes="68px" />
-          </span>
-          <h2 id="composition-title">{composition.channel}</h2>
-        </div>
-        <p className={styles.compositionSubtitle}>YouTube Channel · Piano · Self-composed</p>
-        <p className={styles.compositionText}>{composition.note}</p>
-        <a className={styles.compositionLink} href={composition.url} target="_blank" rel="noreferrer">
-          유튜브 채널 방문 <span>↗</span>
+      <div className={styles.compositionLayout}>
+        <a
+          className={styles.compositionLogo}
+          href={composition.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${composition.channel} 유튜브 채널 방문`}
+        >
+          <Image src={assetPath("/assets/composition/byeolsua-logo.jpg")} alt={`${composition.channel} 로고`} fill sizes="(max-width: 1024px) 140px, 240px" />
         </a>
+        <div className={styles.compositionContent}>
+          <p className={styles.kicker}><span>05</span> Composition</p>
+          <h2 id="composition-title">{composition.channel}</h2>
+          <p className={styles.compositionSubtitle}>YouTube Channel · Piano · Self-composed</p>
+          <p className={styles.compositionText}>{composition.note}</p>
+          <a className={styles.compositionLink} href={composition.url} target="_blank" rel="noreferrer">
+            유튜브 채널 방문 <span>↗</span>
+          </a>
+        </div>
       </div>
     </section>
   );
