@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { composition, productionToolkit } from "@/content/portfolio";
+import { productionToolkit } from "@/content/portfolio";
 import { assetPath } from "@/lib/asset-path";
 import styles from "@/app/page.module.css";
 
@@ -8,8 +8,8 @@ export function PracticeSection() {
     <section className={styles.practiceSection} id="practice" aria-labelledby="practice-title">
       <header className={styles.sectionHeader}>
         <div>
-          <p className={styles.kicker}><span>05</span> Practice</p>
-          <h2 id="practice-title">오디오 제작 공정 자동화 툴킷</h2>
+          <p className={styles.kicker}><span>06</span> Practice</p>
+          <h2 id="practice-title">월라 업무 지원 툴킷</h2>
         </div>
         <div className={styles.count}><strong>4</strong><span>Desktop<br />Tools</span></div>
       </header>
@@ -34,13 +34,6 @@ export function PracticeSection() {
             </div>
           </article>
         ))}
-      </div>
-      <div className={styles.compositionNote}>
-        <p className={styles.kicker}><span>♪</span> Also</p>
-        <p>
-          <a href={composition.url} target="_blank" rel="noreferrer">{composition.channel}</a>{" "}
-          — {composition.note}
-        </p>
       </div>
     </section>
   );

@@ -29,6 +29,7 @@ export type Project = {
   tracks: Track[];
   youtubeUrl?: string;
   thumbnail?: string;
+  summary?: string;
   confidential?: boolean;
   confidentialNote?: string;
   featured?: boolean;
@@ -142,7 +143,7 @@ export const productionToolkit: ToolkitTool[] = [
     description:
       "PDF 원고를 파싱하고 OCR로 보완해 캐릭터별 대사를 추출합니다. 하이라이트·밑줄을 인식해 성우 비용용 글자 수를 산출하고, 위치 정보를 바탕으로 Reaper에 캐릭터별 빈 아이템을 미리 배치합니다.",
     tags: ["PDF Parser", "OCR", "Reaper API"],
-    screenshot: "/assets/toolkit/onscript-annotation.jpg",
+    screenshot: "/assets/toolkit/reaper-track-placement.png",
   },
   {
     icon: "🎙️",
@@ -150,7 +151,6 @@ export const productionToolkit: ToolkitTool[] = [
     description:
       "fast-whisper·WhisperX로 녹음본을 분석해 원고 도우미가 추출한 대사와 실제 녹음 구간을 매핑합니다. 원고 대비 오독 체크까지 함께 수행해 1차 검수와 컷 편집 기준을 빠르게 확보합니다.",
     tags: ["fast-whisper", "WhisperX", "Reaper Edit Auto"],
-    screenshot: "/assets/toolkit/oncue-dashboard.jpg",
   },
   {
     icon: "👑",
@@ -170,19 +170,33 @@ export const productionToolkit: ToolkitTool[] = [
 
 export const aiProjects: Project[] = [
   {
-    id: "production-automation-toolkit",
+    id: "welaaon-ax-pipeline",
     order: "01",
-    title: "오디오 제작 공정 자동화 툴킷",
-    shortTitle: "오디오 제작 공정 자동화 툴킷",
-    category: "AI Tool Design · Production Automation",
-    role: "Tool Design · Python Development",
+    title: "WelaaaON — 사운드 제작 AX 파이프라인 제안",
+    shortTitle: "WelaaaON AX 파이프라인",
+    category: "AX Pipeline Proposal",
+    role: "Pipeline Design · Prototype Development",
     tracks: ["ai"],
-    thumbnail: "/assets/toolkit/onair-scheduler.jpg",
+    thumbnail: "/assets/pipeline/onscript-annotation.jpg",
+    summary:
+      "소싱부터 오디오북 초벌 편집, BGM·효과음·목소리 변환까지 이어지는 6단계 AX 파이프라인을 설계해 회사에 제안했습니다. 그중 OnAir(스케줄·현황) · OnScript(원고 정본화) · OnCue(초벌 자동 편집) 3단계는 상세 설계와 프로토타입 개발까지 직접 완료했고, 인력·장비·구독료 예산안까지 포함한 승인 요청서를 작성했습니다.",
     featured: true,
   },
   {
-    id: "cinematic-trailer-redesign",
+    id: "willa-toolkit",
     order: "02",
+    title: "월라 업무 지원 툴킷",
+    shortTitle: "월라 업무 지원 툴킷",
+    category: "Internal Tool Suite",
+    role: "Tool Design · Python Development",
+    tracks: ["ai"],
+    thumbnail: "/assets/toolkit/willa-toolkit-hub.png",
+    summary:
+      "원고 도우미·오디오 도우미·순위 도우미·프롬프트 도우미 4개 도구로 구성된 사내 제작 지원 툴킷입니다. PDF 원고 파싱부터 Reaper 캐릭터별 트랙 자동 배치까지, 반복되는 제작 공정을 직접 관찰하고 자동화했습니다.",
+  },
+  {
+    id: "cinematic-trailer-redesign",
+    order: "03",
     title: "Generative AI 100% 활용 — 시네마틱 트레일러 사운드 리디자인",
     shortTitle: "시네마틱 트레일러 사운드 리디자인",
     category: "Generative Audio R&D",
@@ -192,7 +206,7 @@ export const aiProjects: Project[] = [
   },
   {
     id: "netmarble-voice-ai-confidential",
-    order: "03",
+    order: "04",
     title: "넷마블 · 음성 AI 데이터·모델 품질 실무",
     shortTitle: "음성 AI 데이터·모델 품질 실무",
     category: "AI Audio R&D",

@@ -95,7 +95,7 @@ export function WorksSection({ id, index, kicker, heading, countLabel, projects,
         <div className={styles.count}><strong>{String(projects.length).padStart(2, "0")}</strong><span>{countLabel}</span></div>
       </header>
 
-      <div className={styles.projectGrid} data-count={projects.length}>
+      <div className={styles.projectGrid} style={{ "--rows": Math.max(projects.length - 1, 1) } as React.CSSProperties}>
         {projects.map((project) => (
           <button
             key={project.id}
@@ -156,6 +156,7 @@ export function WorksSection({ id, index, kicker, heading, countLabel, projects,
                 <div><dt>Type</dt><dd>{activeProject.category}</dd></div>
                 <div><dt>Scope</dt><dd>{activeProject.role}</dd></div>
               </dl>
+              {activeProject.summary && <p className={styles.dialogNote}>{activeProject.summary}</p>}
               {activeProject.confidential && dialogThumbnail && (
                 <p className={styles.dialogNote}>{activeProject.confidentialNote}</p>
               )}

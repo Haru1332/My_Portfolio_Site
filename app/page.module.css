@@ -129,11 +129,12 @@
 .count strong { font-family: var(--font-latin); font-size: clamp(22px, 1.8vw, 27px); line-height: .9; font-weight: 500; }
 .count span { color: #9ba09e; font-size: 9px; line-height: 1.45; letter-spacing: .07em; text-transform: uppercase; }
 
-.projectGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(16px, 2vw, 28px); }
-.projectCard { position: relative; min-width: 0; padding: 0; display: grid; grid-template-rows: auto auto; overflow: hidden; cursor: pointer; background: transparent; text-align: left; }
-.featuredCard { grid-column: span 2; }
-.featuredCard .projectVisual { aspect-ratio: 16 / 9; }
-.secondaryCard .projectVisual { aspect-ratio: 4 / 3; }
+.projectGrid { --rows: 2; display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); grid-template-rows: repeat(var(--rows), minmax(220px, 1fr)); gap: clamp(16px, 2vw, 28px); }
+.projectCard { position: relative; min-width: 0; min-height: 0; padding: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; overflow: hidden; cursor: pointer; background: transparent; text-align: left; }
+.featuredCard { grid-column: 1; grid-row: 1 / span var(--rows); grid-template-rows: auto auto; }
+.featuredCard .projectVisual { height: auto; aspect-ratio: 16 / 9; }
+.secondaryCard { grid-column: 2; }
+.secondaryCard .projectVisual { height: 100%; }
 .projectVisual { position: relative; min-height: 0; height: auto; display: block; overflow: hidden; isolation: isolate; background: #161a1b; }
 .projectVisual::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background: linear-gradient(0deg, rgba(5,6,7,.66), transparent 46%), linear-gradient(130deg, transparent 48%, rgba(255,255,255,.06)); }
 .projectVisual img { object-fit: cover; object-position: center; transition: transform 900ms var(--ease), filter 450ms ease; }
@@ -190,10 +191,19 @@
 .toolkitBody > p { margin: 0; color: #9aa09e; font-size: 12px; line-height: 1.75; text-wrap: pretty; }
 .toolkitTags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 7px; }
 .toolkitTags span { padding: 6px 10px; border: 1px solid var(--line); color: #aeb3b1; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
-.compositionNote { max-width: 760px; margin-top: clamp(40px, 5vw, 64px); padding-top: 24px; border-top: 1px solid var(--line); }
-.compositionNote p:last-child { margin: 12px 0 0; color: #9aa09e; font-size: 13px; line-height: 1.85; }
-.compositionNote a { color: var(--ivory); border-bottom: 1px solid var(--line-strong); }
-.compositionNote a:hover, .compositionNote a:focus-visible { border-color: var(--accent-sound); }
+/* Composition */
+.compositionSection { position: relative; min-height: 440px; padding: clamp(90px, 9vw, 140px) clamp(24px, 6vw, 96px); display: flex; align-items: center; overflow: hidden; isolation: isolate; border-top: 1px solid var(--line); background: linear-gradient(160deg, #0b0d0e, #050607 70%); }
+.compositionKeys { position: absolute; z-index: -1; inset: auto 0 0 0; height: 46%; display: flex; opacity: .5; }
+.compositionKeys i { flex: 1 1 0; border-right: 1px solid rgba(5,6,7,.6); background: linear-gradient(0deg, color-mix(in srgb, var(--accent-sound) 30%, transparent), transparent 88%); }
+.compositionKeys i[data-sharp="true"] { background: linear-gradient(0deg, rgba(5,6,7,.75) 0%, rgba(5,6,7,.75) 62%, transparent 62%); }
+.compositionSection::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, #050607 0%, transparent 60%); }
+.compositionContent { max-width: 640px; }
+.compositionContent h2 { margin: 20px 0 6px; font-family: var(--font-serif); font-size: clamp(40px, 5vw, 68px); line-height: 1; font-weight: 430; letter-spacing: -.04em; }
+.compositionSubtitle { margin: 0 0 22px; color: var(--accent-sound); font-family: var(--font-latin); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+.compositionText { max-width: 520px; margin: 0; color: #b6bbb8; font-size: 14px; line-height: 1.9; text-wrap: pretty; }
+.compositionLink { margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; padding: 15px 22px; border: 1px solid var(--line-strong); color: var(--ivory); font-size: 12px; letter-spacing: .04em; transition: color 220ms ease, background 220ms ease, border-color 220ms ease; }
+.compositionLink span { font-size: 15px; }
+.compositionLink:hover, .compositionLink:focus-visible { color: var(--black); background: var(--ivory); border-color: var(--ivory); }
 
 /* Contact */
 .contactSection { position: relative; min-height: 560px; padding: clamp(90px, 8vw, 126px) clamp(24px, 8vw, 132px) 44px; display: flex; flex-direction: column; isolation: isolate; overflow: hidden; border-top: 1px solid var(--line); background: radial-gradient(circle at 82% 22%, rgba(95,163,184,.1), transparent 26%), linear-gradient(155deg, #0c0f10, #050607 66%); }
@@ -301,8 +311,10 @@
   .count { min-width: 76px; padding-left: 12px; gap: 7px; }
   .count strong { font-size: 20px; }
   .count span { font-size: 8px; line-height: 1.4; }
-  .projectGrid { grid-template-columns: 1fr; gap: 22px; }
-  .featuredCard { grid-column: 1; }
+  .projectGrid { grid-template-columns: 1fr; grid-template-rows: none; gap: 22px; }
+  .featuredCard { grid-column: 1; grid-row: auto; }
+  .secondaryCard { grid-column: 1; }
+  .secondaryCard .projectVisual { height: auto; aspect-ratio: 16 / 9; }
   .projectInfo strong { font-size: 20px; }
 
   .practiceSection { padding: 96px 20px 110px; }

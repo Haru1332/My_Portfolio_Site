@@ -1,4 +1,5 @@
 import { CareerSection } from "@/components/CareerSection";
+import { CompositionSection } from "@/components/CompositionSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -35,6 +36,7 @@ export default function Home() {
           projects={soundProjects}
           track="sound"
         />
+        <CompositionSection />
         <PracticeSection />
         <ContactSection />
       </main>
