@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
+      NEXT_PUBLIC_BASE_PATH: /My_Portfolio_Site
 
     steps:
       - name: Checkout
