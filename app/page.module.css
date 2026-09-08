@@ -182,29 +182,35 @@
 .dialogPlay:hover, .dialogPlay:focus-visible { color: #0b0d0e; background: var(--ivory); }
 
 /* AI Works — case studies */
-.caseStudyList { display: flex; flex-direction: column; gap: clamp(28px, 3vw, 44px); }
-.caseStudyItem { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(280px, .8fr); gap: clamp(28px, 3vw, 48px); padding: clamp(24px, 2.4vw, 34px); border: 1px solid var(--line); background: rgba(255,255,255,.02); }
-.caseStudyMedia { position: relative; aspect-ratio: 16 / 9.6; overflow: hidden; border: 1px solid var(--line); background: #10171a; }
-.caseStudyMediaItem { position: absolute; inset: 0; }
-.caseStudyMediaItem img { object-fit: cover; object-position: top; }
-.caseStudyMediaMulti { aspect-ratio: auto; display: flex; flex-direction: column; gap: 2px; background: #000; }
-.caseStudyMediaMulti .caseStudyMediaItem { position: relative; inset: auto; aspect-ratio: 16 / 9; }
-.caseStudyMediaLabel { position: absolute; z-index: 3; left: 12px; bottom: 12px; padding: 6px 10px; border: 1px solid rgba(235,231,223,.2); color: var(--ivory); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; background: rgba(5,6,7,.62); backdrop-filter: blur(6px); }
+.caseStudyGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 2.4vw, 32px); }
+.caseStudyItem { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.caseStudyMedia { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); background: #10171a; isolation: isolate; }
+.caseStudyTrack { display: flex; width: 100%; height: 100%; transition: transform 460ms var(--ease); }
+.caseStudySlide { position: relative; flex: 0 0 100%; min-width: 0; }
+.caseStudySlide img { object-fit: cover; object-position: top; }
+.caseStudyMediaLabel { position: absolute; z-index: 3; left: 12px; top: 12px; padding: 6px 10px; border: 1px solid rgba(235,231,223,.2); color: var(--ivory); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; background: rgba(5,6,7,.62); backdrop-filter: blur(6px); }
+.caseStudyArrow { position: absolute; z-index: 4; top: 50%; width: 34px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; color: #fff; background: rgba(5,6,7,.42); font-size: 15px; line-height: 1; backdrop-filter: blur(6px); transform: translateY(-50%); opacity: 0; transition: opacity 220ms ease, background 220ms ease, color 220ms ease; }
+.caseStudyMedia:hover .caseStudyArrow, .caseStudyArrow:focus-visible { opacity: 1; }
+.caseStudyArrow:hover, .caseStudyArrow:focus-visible { color: var(--black); background: var(--ivory); }
+.caseStudyArrowPrev { left: 12px; }
+.caseStudyArrowNext { right: 12px; }
+.caseStudyDots { position: absolute; z-index: 4; left: 0; right: 0; bottom: 12px; display: flex; justify-content: center; gap: 7px; }
+.caseStudyDots button { width: 6px; height: 6px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.4); cursor: pointer; transition: background 220ms ease, transform 220ms ease; }
+.caseStudyDots button[aria-current="true"] { background: var(--ivory); transform: scale(1.35); }
 .caseStudyPlayThumb { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background: #000; }
 .caseStudyPlayThumb img { object-fit: cover; }
 .caseStudyPlayThumb:hover .play, .caseStudyPlayThumb:focus-visible .play { color: var(--black); background: var(--ivory); transform: translate(-50%, -50%) scale(1.08); }
 .caseStudyMedia iframe { position: absolute; inset: 0; width: 100%; height: 100%; display: block; border: 0; }
-.caseStudyInfo { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.caseStudyInfo { padding: clamp(20px, 2vw, 26px) clamp(22px, 2.2vw, 28px) clamp(24px, 2.4vw, 30px); display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .caseStudyInfo small { color: #a8adaa; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
-.caseStudyInfo h3 { margin: 4px 0 0; font-family: var(--font-serif); font-size: clamp(20px, 1.8vw, 27px); line-height: 1.3; font-weight: 430; letter-spacing: -.03em; text-wrap: balance; }
+.caseStudyInfo h3 { margin: 4px 0 0; font-family: var(--font-serif); font-size: clamp(18px, 1.5vw, 23px); line-height: 1.3; font-weight: 430; letter-spacing: -.03em; text-wrap: balance; }
 .caseStudyRole { color: #b2b7b4; font-size: 11px; letter-spacing: .04em; }
-.caseStudySummary { margin: 10px 0 0; color: #9aa09e; font-size: 13px; line-height: 1.85; text-wrap: pretty; }
-.caseStudyTools { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; padding-top: 18px; border-top: 1px solid var(--line); }
-.caseStudyToolChip { padding: 12px 14px; border: 1px solid var(--line); background: rgba(255,255,255,.015); }
-.caseStudyToolHead { margin: 0 0 6px; display: flex; align-items: center; gap: 8px; }
-.caseStudyToolHead span { font-size: 15px; }
-.caseStudyToolHead strong { font-size: 12px; font-weight: 500; letter-spacing: -.01em; }
-.caseStudyToolChip p:last-child { margin: 0; color: #9aa09e; font-size: 11px; line-height: 1.7; }
+.caseStudySummary { margin: 10px 0 0; color: #9aa09e; font-size: 12.5px; line-height: 1.85; text-wrap: pretty; }
+.caseStudyTools { margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
+.caseStudyToolChip { padding: 10px 12px; border: 1px solid var(--line); background: rgba(255,255,255,.015); }
+.caseStudyToolHead { margin: 0; display: flex; align-items: center; gap: 8px; }
+.caseStudyToolHead span { font-size: 14px; }
+.caseStudyToolHead strong { font-size: 11px; font-weight: 500; letter-spacing: -.01em; }
 /* Composition */
 .compositionSection { position: relative; min-height: 440px; padding: clamp(90px, 9vw, 140px) clamp(24px, 6vw, 96px); display: flex; align-items: center; overflow: hidden; isolation: isolate; border-top: 1px solid var(--line); background: linear-gradient(160deg, #0b0d0e, #050607 70%); }
 .compositionKeys { position: absolute; z-index: -1; inset: auto 0 0 0; height: 46%; display: flex; opacity: .5; }
@@ -331,7 +337,7 @@
   .secondaryCard .projectVisual { height: auto; aspect-ratio: 16 / 9; }
   .projectInfo strong { font-size: 20px; }
 
-  .caseStudyItem { grid-template-columns: 1fr; padding: 20px; gap: 20px; }
+  .caseStudyGrid { grid-template-columns: 1fr; }
   .caseStudyTools { grid-template-columns: 1fr; }
 
   .contactSection { min-height: 500px; padding: 72px 20px 42px; }
