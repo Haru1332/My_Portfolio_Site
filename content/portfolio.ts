@@ -29,6 +29,7 @@ export type Project = {
   tracks: Track[];
   youtubeUrl?: string;
   thumbnail?: string;
+  gallery?: string[];
   summary?: string;
   confidential?: boolean;
   confidentialNote?: string;
@@ -143,7 +144,6 @@ export const productionToolkit: ToolkitTool[] = [
     description:
       "PDF 원고를 파싱하고 OCR로 보완해 캐릭터별 대사를 추출합니다. 하이라이트·밑줄을 인식해 성우 비용용 글자 수를 산출하고, 위치 정보를 바탕으로 Reaper에 캐릭터별 빈 아이템을 미리 배치합니다.",
     tags: ["PDF Parser", "OCR", "Reaper API"],
-    screenshot: "/assets/toolkit/reaper-track-placement.png",
   },
   {
     icon: "🎙️",
@@ -170,8 +170,34 @@ export const productionToolkit: ToolkitTool[] = [
 
 export const aiProjects: Project[] = [
   {
-    id: "welaaon-ax-pipeline",
+    id: "willa-toolkit",
     order: "01",
+    title: "월라 업무 지원 툴킷",
+    shortTitle: "월라 업무 지원 툴킷",
+    category: "Internal Tool Suite",
+    role: "Tool Design · Python Development",
+    tracks: ["ai"],
+    thumbnail: "/assets/toolkit/willa-toolkit-hub.png",
+    summary:
+      "원고 도우미·오디오 도우미·순위 도우미·프롬프트 도우미 4개 도구로 구성된 사내 제작 지원 툴킷입니다. 반복되는 제작 공정을 직접 관찰하고 자동화했습니다.",
+    featured: true,
+  },
+  {
+    id: "reaper-recording-automation",
+    order: "02",
+    title: "Reaper 녹음 세션 자동화 스크립트",
+    shortTitle: "Reaper 녹음 세션 자동화",
+    category: "DAW Scripting",
+    role: "Lua · Python Scripting",
+    tracks: ["ai"],
+    thumbnail: "/assets/toolkit/reaper-track-placement.png",
+    gallery: ["/assets/toolkit/reaper-track-placement.png", "/assets/toolkit/reaper-full-timeline.png"],
+    summary:
+      "오디오북 녹음 세션을 위해 Reaper 내부에서 동작하는 Lua·Python 스크립트를 직접 개발했습니다. 원고를 파싱하고 어노테이션으로 캐릭터를 구분해 트랙을 나누고, 각 대사 위치에 빈 아이템을 미리 배치합니다. 녹음이 진행되면 해당 아이템이 실제 녹음 파일로 자동 교체되고, 아직 녹음되지 않은 빈 아이템들은 뒤로 자동 밀려나며 정렬을 유지합니다. 이 밖에도 여러 리퍼 편의 기능을 스크립트로 구현해 적용했습니다.",
+  },
+  {
+    id: "welaaon-ax-pipeline",
+    order: "03",
     title: "WelaaaON — 사운드 제작 AX 파이프라인 제안",
     shortTitle: "WelaaaON AX 파이프라인",
     category: "AX Pipeline Proposal",
@@ -180,23 +206,10 @@ export const aiProjects: Project[] = [
     thumbnail: "/assets/pipeline/onscript-annotation.jpg",
     summary:
       "소싱부터 오디오북 초벌 편집, BGM·효과음·목소리 변환까지 이어지는 6단계 AX 파이프라인을 설계해 회사에 제안했습니다. 그중 OnAir(스케줄·현황) · OnScript(원고 정본화) · OnCue(초벌 자동 편집) 3단계는 상세 설계와 프로토타입 개발까지 직접 완료했고, 인력·장비·구독료 예산안까지 포함한 승인 요청서를 작성했습니다.",
-    featured: true,
-  },
-  {
-    id: "willa-toolkit",
-    order: "02",
-    title: "월라 업무 지원 툴킷",
-    shortTitle: "월라 업무 지원 툴킷",
-    category: "Internal Tool Suite",
-    role: "Tool Design · Python Development",
-    tracks: ["ai"],
-    thumbnail: "/assets/toolkit/willa-toolkit-hub.png",
-    summary:
-      "원고 도우미·오디오 도우미·순위 도우미·프롬프트 도우미 4개 도구로 구성된 사내 제작 지원 툴킷입니다. PDF 원고 파싱부터 Reaper 캐릭터별 트랙 자동 배치까지, 반복되는 제작 공정을 직접 관찰하고 자동화했습니다.",
   },
   {
     id: "cinematic-trailer-redesign",
-    order: "03",
+    order: "04",
     title: "Generative AI 100% 활용 — 시네마틱 트레일러 사운드 리디자인",
     shortTitle: "시네마틱 트레일러 사운드 리디자인",
     category: "Generative Audio R&D",
@@ -206,7 +219,7 @@ export const aiProjects: Project[] = [
   },
   {
     id: "netmarble-voice-ai-confidential",
-    order: "04",
+    order: "05",
     title: "넷마블 · 음성 AI 데이터·모델 품질 실무",
     shortTitle: "음성 AI 데이터·모델 품질 실무",
     category: "AI Audio R&D",
@@ -249,18 +262,6 @@ export const soundProjects: Project[] = [
     role: "Sound Redesign",
     tracks: ["sound"],
     youtubeUrl: "https://youtu.be/SEyCsww-y5c",
-  },
-  {
-    id: "willa-long-form-confidential",
-    order: "04",
-    title: "윌라 · 장시간 음성 콘텐츠 제작·검수",
-    shortTitle: "장시간 음성 콘텐츠 제작·검수",
-    category: "Audio Drama / Audiobook",
-    role: "Recording · Direction · Mix",
-    tracks: ["sound"],
-    confidential: true,
-    confidentialNote:
-      "오디오북·오디오드라마의 녹음, 성우 연출, 편집, 후반 검수를 담당했습니다. 서비스 앱 내 제공 콘텐츠 특성상 외부 링크는 첨부하지 않습니다.",
   },
 ];
 

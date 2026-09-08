@@ -128,6 +128,14 @@ export function WorksSection({ id, index, kicker, heading, countLabel, projects,
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               />
+            ) : activeProject.gallery && activeProject.gallery.length > 1 ? (
+              <div className={styles.dialogGallery}>
+                {activeProject.gallery.map((src) => (
+                  <div key={src} className={styles.dialogGalleryItem}>
+                    <Image src={assetPath(src)} alt="" fill sizes="(max-width: 1024px) 50vw, 33vw" />
+                  </div>
+                ))}
+              </div>
             ) : dialogThumbnail ? (
               <div className={styles.dialogImage}>
                 <Image
