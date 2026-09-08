@@ -6,7 +6,7 @@ import styles from "@/app/page.module.css";
 const navigation = [
   ["profile", "Profile"],
   ["career", "Career"],
-  ["ai-works", "Voice AI"],
+  ["ai-works", "AI · AX"],
   ["sound-works", "Sound Design"],
   ["practice", "Practice"],
   ["contact", "Contact"],

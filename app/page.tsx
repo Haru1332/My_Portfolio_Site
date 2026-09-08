@@ -20,9 +20,9 @@ export default function Home() {
         <WorksSection
           id="ai-works"
           index="03"
-          kicker="Voice AI Works"
-          heading="음성 AI 작업"
-          countLabel={<>Voice AI<br />Engineering</>}
+          kicker="AI · AX Works"
+          heading="AI · AX 작업"
+          countLabel={<>AI · AX<br />Engineering</>}
           projects={aiProjects}
           track="ai"
         />

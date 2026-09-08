@@ -79,7 +79,7 @@ export const careers: Career[] = [
     highlightGroups: [
       {
         track: "ai",
-        label: "Voice AI R&D & Production",
+        label: "AI R&D & Production",
         items: [
           "기획팀·사업부·계열사 사운드팀과 협업해 게임 장르별 음성 AI 도입 솔루션을 제안하고 구축했습니다.",
           "모델 출력물의 기계음, 아티팩트, 발음 불안정, 톤 일관성 저하를 청감·스펙트로그램 기준으로 진단해 연구 방향성을 제시했습니다.",
@@ -259,7 +259,7 @@ export const composition = {
 export const profile = {
   nameKo: "김현수",
   nameEn: "Hyeonsu Kim",
-  roleLine: "Sound Designer · Voice AI",
+  roleLine: "Sound Designer · AI/AX",
   email: "haru.info.official@gmail.com",
   github: "https://github.com/Haru1332",
 };
