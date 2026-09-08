@@ -13,17 +13,19 @@ type AiWorksSectionProps = {
   index: string;
   kicker: string;
   heading: string;
+  subtitle?: string;
   countLabel: React.ReactNode;
   projects: Project[];
 };
 
-export function AiWorksSection({ id, index, kicker, heading, countLabel, projects }: AiWorksSectionProps) {
+export function AiWorksSection({ id, index, kicker, heading, subtitle, countLabel, projects }: AiWorksSectionProps) {
   return (
     <section className={styles.workSection} id={id} data-track="ai" aria-labelledby={`${id}-title`}>
       <header className={styles.sectionHeader}>
         <div>
           <p className={styles.kicker}><span>{index}</span> {kicker}</p>
           <h2 id={`${id}-title`}>{heading}</h2>
+          {subtitle && <p className={styles.caseStudySectionNote}>{subtitle}</p>}
         </div>
         <div className={styles.count}><strong>{String(projects.length).padStart(2, "0")}</strong><span>{countLabel}</span></div>
       </header>
@@ -117,6 +119,7 @@ function CaseStudyCard({ project }: { project: Project }) {
         <h3>{project.title}</h3>
         <span className={styles.caseStudyRole}>{project.role}</span>
         {project.tracks.length > 1 && <TrackBadge tracks={project.tracks} />}
+        {project.noteTag && <span className={styles.caseStudyNoteTag}>{project.noteTag}</span>}
         {project.summary && <p className={styles.caseStudySummary}>{project.summary}</p>}
         {project.tools && (
           <div className={styles.caseStudyTools}>

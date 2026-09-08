@@ -23,6 +23,7 @@ export default function Home() {
           index="03"
           kicker="AI · AX Works"
           heading="AI · AX 작업"
+          subtitle="실무 중 발견한 비효율을 바탕으로 개인적으로 기획·개발한 프로젝트입니다. 일부는 실제 제작 공정에 도입되었고, 일부는 회사에 제안한 단계이며, 회사의 공식 대외 발표 자료가 아닙니다."
           countLabel={<>AI · AX<br />Case Studies</>}
           projects={aiProjects}
         />

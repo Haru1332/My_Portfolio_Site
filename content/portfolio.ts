@@ -36,6 +36,7 @@ export type Project = {
   confidentialNote?: string;
   featured?: boolean;
   tools?: ToolkitTool[];
+  noteTag?: string;
 };
 
 export const careers: Career[] = [
@@ -180,8 +181,9 @@ export const aiProjects: Project[] = [
     role: "Tool Design · Python Development",
     tracks: ["ai"],
     thumbnail: "/assets/toolkit/willa-toolkit-hub.png",
+    noteTag: "개인 프로젝트 · 실무 도입",
     summary:
-      "오디오 제작 현장에서 사운드 PD와 엔지니어가 반복적으로 수행하는 공정을 직접 관찰하고, Python 기반 도구와 AI 코딩 어시스턴트로 단계별 자동화한 사내 제작 지원 툴킷입니다. 원고와 녹음본 같은 민감한 제작 데이터가 외부로 나가지 않도록 로컬 실행을 기본 원칙으로 두었습니다.",
+      "오디오 제작 실무 중 사운드 PD와 엔지니어가 반복적으로 수행하는 공정을 발견해 개인적으로 기획·개발한 툴킷입니다. Python 기반 도구와 AI 코딩 어시스턴트로 단계별 자동화했고, 완성 후 실제 제작 공정에 도입해 사용했습니다. 회사의 공식 제작 시스템이 아닌 개인이 만든 보조 도구이며, 원고와 녹음본 같은 민감한 제작 데이터가 외부로 나가지 않도록 로컬 실행을 기본 원칙으로 두었습니다.",
     tools: productionToolkit,
     featured: true,
   },
@@ -207,15 +209,16 @@ export const aiProjects: Project[] = [
     category: "AX Pipeline Proposal",
     role: "Pipeline Design · Prototype Development",
     tracks: ["ai"],
-    thumbnail: "/assets/pipeline/onscript-annotation.jpg",
+    thumbnail: "/assets/pipeline/onscript-annotation.png",
     gallery: [
-      "/assets/pipeline/onair-scheduler.jpg",
-      "/assets/pipeline/onscript-annotation.jpg",
-      "/assets/pipeline/oncue-dashboard.jpg",
+      "/assets/pipeline/onair-scheduler.png",
+      "/assets/pipeline/onscript-annotation.png",
+      "/assets/pipeline/oncue-dashboard.png",
     ],
     galleryLabels: ["OnAir · 스케줄 관리", "OnScript · 원고 정본화", "OnCue · 초벌 자동 편집"],
+    noteTag: "개인 기획 · 회사 제안",
     summary:
-      "소싱부터 오디오북 초벌 편집, BGM·효과음·목소리 변환까지 이어지는 6단계 AX 파이프라인을 설계해 회사에 제안했습니다. 그중 OnAir(스케줄·현황) · OnScript(원고 정본화) · OnCue(초벌 자동 편집) 3단계는 상세 설계와 프로토타입 개발까지 직접 완료했고, 인력·장비·구독료 예산안까지 포함한 승인 요청서를 작성했습니다.",
+      "제작 현장에서 겪은 비효율을 바탕으로 개인적으로 기획한 6단계 AX 파이프라인 제안입니다. 소싱부터 오디오북 초벌 편집, BGM·효과음·목소리 변환까지 이어지는 프로세스를 설계해 회사에 제안했고, 아직 공식 도입된 시스템은 아닙니다. 그중 OnAir(스케줄·현황) · OnScript(원고 정본화) · OnCue(초벌 자동 편집) 3단계는 상세 설계와 프로토타입 개발까지 개인적으로 완료했고, 인력·장비·구독료 예산안까지 포함한 승인 요청서를 작성했습니다.",
   },
   {
     id: "cinematic-trailer-redesign",
