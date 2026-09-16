@@ -13,7 +13,7 @@ export function CompositionSection() {
       </div>
       <div className={styles.compositionLayout}>
         <div className={styles.compositionContent}>
-          <p className={styles.kicker}><span>05</span> Composition</p>
+          <p className={styles.kicker}><span>06</span> Composition</p>
           <h2 id="composition-title">{composition.channel}</h2>
           <p className={styles.compositionSubtitle}>YouTube Channel · Piano · Self-composed</p>
           <p className={styles.compositionText}>{composition.note}</p>

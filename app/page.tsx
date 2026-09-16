@@ -1,3 +1,4 @@
+import { AiContentSection } from "@/components/AiContentSection";
 import { AiWorksSection } from "@/components/AiWorksSection";
 import { CareerSection } from "@/components/CareerSection";
 import { CompositionSection } from "@/components/CompositionSection";
@@ -6,7 +7,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { WorksSection } from "@/components/WorksSection";
-import { aiProjects, soundProjects } from "@/content/portfolio";
+import { aiProjects, contentChannels, soundProjects } from "@/content/portfolio";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -27,9 +28,10 @@ export default function Home() {
           countLabel={<>AI · AX<br />Case Studies</>}
           projects={aiProjects}
         />
+        <AiContentSection id="ai-content" index="04" channels={contentChannels} />
         <WorksSection
           id="sound-works"
-          index="04"
+          index="05"
           kicker="Sound Design Works"
           heading="사운드 디자인 작업"
           countLabel={<>Full Sound<br />Design</>}

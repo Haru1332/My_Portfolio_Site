@@ -266,6 +266,90 @@ export const soundProjects: Project[] = [
   },
 ];
 
+export type ContentVideo = {
+  title: string;
+  url: string;
+  format: "롱폼" | "숏폼";
+  note?: string;
+};
+
+export type ContentChannel = {
+  id: string;
+  name: string;
+  handle: string;
+  url: string;
+  language: string;
+  role: string;
+  description: string;
+  stat: string;
+  videos: ContentVideo[];
+};
+
+export const contentChannels: ContentChannel[] = [
+  {
+    id: "momomaru",
+    name: "모모마루 (もも丸)",
+    handle: "@momomaru_channel",
+    url: "https://www.youtube.com/@momomaru_channel/",
+    language: "일본어",
+    role: "기획 · AI 영상 생성 · 편집 · 채널 운영",
+    description:
+      "생성형 AI 영상 도구가 막 등장했던 초기에, 일본어권을 타깃으로 직접 기획한 동물 캐릭터 숏폼 콘텐츠입니다. 캐릭터 설정과 대사 기획부터 AI 영상 생성, 편집, 업로드까지 전 과정을 혼자 운영했습니다.",
+    stat: "롱폼 2개 · 숏폼 4개(롱폼 발췌)",
+    videos: [
+      {
+        title: "【フル】会社員あるある｜エレベーターで上司と二人きりはムリすぎww",
+        url: "https://www.youtube.com/watch?v=xNJ82NYkKNg",
+        format: "롱폼",
+      },
+      {
+        title: "給料の前日のボクの姿！残高ゼロでだいぴんち！？半額で逆転するボク！",
+        url: "https://www.youtube.com/watch?v=caYIAHKs0OQ",
+        format: "롱폼",
+      },
+      { title: "上司と二人きりとかムリムリww", url: "https://www.youtube.com/shorts/ENKYfiyrNVE", format: "숏폼" },
+      { title: "退勤直前のボク、テンション高すぎww", url: "https://www.youtube.com/shorts/WUJNWyQ4Gq4", format: "숏폼" },
+      {
+        title: "給料日前のボク🐿️半額シールで生き延びる🍙",
+        url: "https://www.youtube.com/shorts/uDyYe3E85Eo",
+        format: "숏폼",
+      },
+      { title: "かわいすぎ…おにぎりモモマル🐿️🍙", url: "https://www.youtube.com/shorts/eLt5MHs9CGU", format: "숏폼" },
+    ],
+  },
+  {
+    id: "noe-ddaeryeo-bakgi",
+    name: "뇌에 때려박기",
+    handle: "@뇌에때려박기",
+    url: "https://www.youtube.com/@뇌에때려박기",
+    language: "한국어",
+    role: "기획 · 대본 · AI 이미지 생성 · 편집 · 채널 운영",
+    description:
+      "생활 정보와 시사 이슈를 짧게 정리해 훑어보는 한국형 숏폼 콘텐츠입니다. 대본 작성부터 AI 이미지 생성, 편집, 업로드까지 동일한 포맷으로 반복하며 양산형 숏폼 제작 파이프라인을 실험했습니다.",
+    stat: "숏폼 56개 · 구독자 68명",
+    videos: [
+      {
+        title: "열사병 이렇게 막아야 합니다!",
+        url: "https://www.youtube.com/shorts/z5mSAAhPIak",
+        format: "숏폼",
+        note: "조회수 2.1천회",
+      },
+      {
+        title: "미국 관세 협상, 결국 어떻게 되는 거죠?",
+        url: "https://www.youtube.com/shorts/TD4rgamq22o",
+        format: "숏폼",
+        note: "조회수 1.2천회",
+      },
+      {
+        title: "전기요금 깎아준다면서… 나만 못 받는다고?",
+        url: "https://www.youtube.com/shorts/3YXc-nv1qQo",
+        format: "숏폼",
+        note: "조회수 1천회",
+      },
+    ],
+  },
+];
+
 export const composition = {
   channel: "별수아",
   url: "https://youtube.com/@byeolsua",
