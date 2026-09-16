@@ -218,53 +218,54 @@
 .caseStudyToolHead span { font-size: 14px; }
 .caseStudyToolHead strong { font-size: 11px; font-weight: 500; letter-spacing: -.01em; }
 
-/* AI Content Channels */
-.contentSection { padding: clamp(100px, 11vw, 170px) clamp(24px, 6vw, 96px); border-top: 1px solid var(--line); background: #070a0b; }
-.contentChannelGrid { margin-top: 34px; display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 2.4vw, 32px); }
-.contentChannel { display: flex; flex-direction: column; gap: 16px; padding: clamp(22px, 2.4vw, 32px); border: 1px solid var(--line); background: rgba(255,255,255,.02); }
-.contentChannelHead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; }
-.contentChannelLang { padding: 4px 9px; border: 1px solid var(--line-strong); color: #a7abaa; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
-.contentChannelHead h3 { margin: 0; font-family: var(--font-serif); font-size: clamp(20px, 1.8vw, 26px); font-weight: 430; letter-spacing: -.03em; }
-.contentChannelRole { width: 100%; color: #9aa09e; font-size: 11px; letter-spacing: .02em; }
-.contentChannelDesc { margin: 0; color: #9aa09e; font-size: 12.5px; line-height: 1.85; text-wrap: pretty; }
-.contentChannelMeta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 16px; padding-top: 14px; border-top: 1px solid var(--line); color: #9ba09e; font-size: 11px; }
-.contentChannelMeta a { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-ai); transition: color 220ms ease; }
-.contentChannelMeta a:hover, .contentChannelMeta a:focus-visible { color: var(--ivory); }
-.contentVideoList { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
-.contentVideoChip { display: flex; align-items: center; gap: 10px; max-width: 280px; padding: 6px; border: 1px solid var(--line); background: rgba(255,255,255,.015); transition: border-color 220ms ease, background 220ms ease; }
+/* Channels (AI content + Composition, unified) */
+.channelsSection { padding: clamp(100px, 11vw, 170px) clamp(24px, 6vw, 96px); border-top: 1px solid var(--line); background: #070a0b; }
+.channelGrid { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2vw, 26px); align-items: start; }
+.channelCard { position: relative; display: flex; flex-direction: column; gap: 14px; padding: clamp(20px, 2vw, 26px); border: 1px solid var(--line); background: rgba(255,255,255,.02); }
+.channelCard[data-channel="byeolsua"] { overflow: hidden; isolation: isolate; }
+.channelCard[data-channel="byeolsua"]::before { content: ""; position: absolute; z-index: -1; inset: auto 0 0 0; height: 34%; opacity: .3; background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--accent-sound) 26%, transparent) 0 14px, transparent 14px 28px); }
+.channelHead { display: flex; align-items: center; gap: 14px; }
+.channelAvatar { position: relative; flex: none; width: 56px; aspect-ratio: 1; overflow: hidden; border-radius: 50%; border: 1px solid var(--line-strong); background: #10171a; transition: transform 260ms var(--ease), border-color 220ms ease; }
+.channelAvatar img { object-fit: cover; }
+.channelAvatar:hover, .channelAvatar:focus-visible { transform: translateY(-2px); border-color: var(--accent-sound); }
+.channelHeadText { min-width: 0; }
+.channelLang { display: inline-block; margin-bottom: 5px; padding: 3px 8px; border: 1px solid var(--line-strong); color: #a7abaa; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+.channelHeadText h3 { margin: 0; font-family: var(--font-serif); font-size: clamp(17px, 1.4vw, 21px); font-weight: 430; letter-spacing: -.03em; }
+.channelRole { display: block; margin-top: 3px; color: #9aa09e; font-size: 10px; }
+.channelAiScope { margin: 0; padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--accent-ai) 45%, var(--line-strong)); color: var(--accent-ai); font-size: 10px; line-height: 1.5; }
+.channelDesc { margin: 0; color: #9aa09e; font-size: 12px; line-height: 1.8; text-wrap: pretty; }
+.channelMeta { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 12px; border-top: 1px solid var(--line); color: #9ba09e; font-size: 10px; }
+.channelMeta a { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-sound); transition: color 220ms ease; }
+.channelMeta a:hover, .channelMeta a:focus-visible { color: var(--ivory); }
+
+.contentVideoList { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.contentVideoChip { width: 100%; display: flex; align-items: center; gap: 10px; padding: 6px; border: 1px solid var(--line); background: rgba(255,255,255,.015); cursor: pointer; text-align: left; transition: border-color 220ms ease, background 220ms ease; }
 .contentVideoChip:hover, .contentVideoChip:focus-visible { border-color: var(--accent-ai); background: rgba(95,163,184,.08); }
 .contentVideoThumb { position: relative; flex: none; width: 64px; aspect-ratio: 16 / 9; overflow: hidden; background: #10171a; }
 .contentVideoThumb img { object-fit: cover; }
+.contentVideoPlay { position: absolute; z-index: 2; left: 50%; top: 50%; width: 20px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.6); border-radius: 50%; color: #fff; background: rgba(5,6,7,.4); font-size: 7px; transform: translate(-50%, -50%); }
 .contentVideoInfo { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .contentVideoInfo b { color: var(--accent-ai); font-size: 8px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
 .contentVideoInfo strong { color: var(--ivory); font-size: 11px; font-weight: 500; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .contentVideoInfo small { color: #8b908e; font-size: 9px; }
 
-/* Composition */
-.compositionSection { position: relative; padding: clamp(90px, 9vw, 140px) 0; display: flex; flex-direction: column; gap: clamp(56px, 7vw, 88px); overflow: hidden; isolation: isolate; border-top: 1px solid var(--line); background: linear-gradient(160deg, #0b0d0e, #050607 70%); }
-.compositionKeys { position: absolute; z-index: -1; inset: auto 0 0 0; height: 46%; display: flex; opacity: .5; }
-.compositionKeys i { flex: 1 1 0; border-right: 1px solid rgba(5,6,7,.6); background: linear-gradient(0deg, color-mix(in srgb, var(--accent-sound) 30%, transparent), transparent 88%); }
-.compositionKeys i[data-sharp="true"] { background: linear-gradient(0deg, rgba(5,6,7,.75) 0%, rgba(5,6,7,.75) 62%, transparent 62%); }
-.compositionSection::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, #050607 0%, transparent 60%); }
-.compositionLayout { display: flex; align-items: center; justify-content: space-between; gap: clamp(32px, 5vw, 64px); width: 100%; padding: 0 clamp(24px, 6vw, 96px); }
 .compositionAlbums { position: relative; width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .compositionAlbums:hover .compositionAlbumsTrack { animation-play-state: paused; }
-.compositionAlbumsTrack { display: flex; width: max-content; gap: clamp(12px, 1.4vw, 20px); animation: composition-marquee var(--marquee-duration, 90s) linear infinite; }
-.compositionAlbumCover { position: relative; flex: none; width: clamp(96px, 9vw, 148px); aspect-ratio: 1; overflow: hidden; border: 1px solid var(--line); background: #10171a; transition: transform 320ms var(--ease), border-color 220ms ease; }
+.compositionAlbumsTrack { display: flex; width: max-content; gap: clamp(8px, 1vw, 12px); animation: composition-marquee var(--marquee-duration, 90s) linear infinite; }
+.compositionAlbumCover { position: relative; flex: none; width: clamp(64px, 8vw, 92px); aspect-ratio: 1; padding: 0; overflow: hidden; border: 1px solid var(--line); background: #10171a; cursor: pointer; transition: transform 320ms var(--ease), border-color 220ms ease; }
+.compositionAlbumCover:disabled { cursor: default; }
 .compositionAlbumCover img { object-fit: cover; }
-.compositionAlbumCover em { position: absolute; z-index: 2; inset: auto 0 0 0; padding: 18px 10px 8px; color: var(--ivory); font-style: normal; font-size: 9px; line-height: 1.35; letter-spacing: -.01em; text-wrap: balance; background: linear-gradient(0deg, rgba(5,6,7,.88), transparent); opacity: 0; transition: opacity 220ms ease; }
-.compositionAlbumCover:hover { transform: translateY(-4px); border-color: var(--accent-sound); z-index: 3; }
+.compositionAlbumCover em { position: absolute; z-index: 2; inset: auto 0 0 0; padding: 14px 7px 6px; color: var(--ivory); font-style: normal; font-size: 8px; line-height: 1.3; letter-spacing: -.01em; text-wrap: balance; background: linear-gradient(0deg, rgba(5,6,7,.9), transparent); opacity: 0; transition: opacity 220ms ease; }
+.compositionAlbumCover:hover { transform: translateY(-3px); border-color: var(--accent-sound); z-index: 3; }
 .compositionAlbumCover:hover em { opacity: 1; }
-.compositionLogo { position: relative; flex: none; margin-left: auto; width: clamp(140px, 16vw, 240px); aspect-ratio: 1; overflow: hidden; border-radius: 50%; border: 1px solid var(--line-strong); background: #10171a; transition: transform 320ms var(--ease), border-color 220ms ease; }
-.compositionLogo img { object-fit: cover; }
-.compositionLogo:hover, .compositionLogo:focus-visible { transform: translateY(-3px); border-color: var(--accent-sound); }
-.compositionContent { max-width: 640px; min-width: 0; }
-.compositionContent h2 { margin: 20px 0 6px; font-family: var(--font-serif); font-size: clamp(40px, 5vw, 68px); line-height: 1; font-weight: 430; letter-spacing: -.04em; }
-.compositionSubtitle { margin: 0 0 22px; color: var(--accent-sound); font-family: var(--font-latin); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
-.compositionText { max-width: 520px; margin: 0; color: #b6bbb8; font-size: 14px; line-height: 1.9; text-wrap: pretty; }
-.compositionLink { margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; padding: 15px 22px; border: 1px solid var(--line-strong); color: var(--ivory); font-size: 12px; letter-spacing: .04em; transition: color 220ms ease, background 220ms ease, border-color 220ms ease; }
-.compositionLink span { font-size: 15px; }
-.compositionLink:hover, .compositionLink:focus-visible { color: var(--black); background: var(--ivory); border-color: var(--ivory); }
+.compositionAlbumCover .contentVideoPlay { opacity: 0; transition: opacity 220ms ease; }
+.compositionAlbumCover:hover .contentVideoPlay { opacity: 1; }
+
+.channelVideoDialog { width: min(640px, calc(100vw - 32px)); padding: 0; overflow: hidden; color: var(--ivory); border: 1px solid var(--line-strong); background: #0b0d0e; box-shadow: 0 30px 90px rgba(0,0,0,.72); }
+.channelVideoDialog::backdrop { background: rgba(0,0,0,.8); backdrop-filter: blur(8px); }
+.channelVideoFrame { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.channelVideoFrame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.channelVideoTitle { margin: 0; padding: 14px 18px; border-top: 1px solid var(--line); color: #cfd2d0; font-size: 12px; line-height: 1.5; }
 
 /* Contact */
 .contactSection { position: relative; min-height: 560px; padding: clamp(90px, 8vw, 126px) clamp(24px, 8vw, 132px) 44px; display: flex; flex-direction: column; isolation: isolate; overflow: hidden; border-top: 1px solid var(--line); background: radial-gradient(circle at 82% 22%, rgba(95,163,184,.1), transparent 26%), linear-gradient(155deg, #0c0f10, #050607 66%); }
@@ -396,12 +397,8 @@
   .caseStudyGrid { grid-template-columns: 1fr; }
   .caseStudyTools { grid-template-columns: 1fr; }
 
-  .contentSection { padding: 76px 20px 100px; }
-  .contentChannelGrid { grid-template-columns: 1fr; }
-  .contentVideoChip { max-width: 100%; width: 100%; }
-
-  .compositionLayout { flex-direction: column; align-items: flex-start; gap: 24px; }
-  .compositionLogo { width: 120px; margin-left: 0; }
+  .channelsSection { padding: 76px 20px 100px; }
+  .channelGrid { grid-template-columns: 1fr; }
 
   .contactSection { min-height: 500px; padding: 72px 20px 42px; }
   .contactMail { margin-top: 24px; padding-block: 22px; }

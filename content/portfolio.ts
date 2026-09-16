@@ -273,29 +273,44 @@ export type ContentVideo = {
   note?: string;
 };
 
-export type ContentChannel = {
+export type Album = {
+  title: string;
+  cover: string;
+  /** YouTube video URL for this track. Omit until the real link is known — the tile then shows without a play affordance. */
+  url?: string;
+};
+
+type ChannelBase = {
   id: string;
   name: string;
   handle: string;
   url: string;
+  avatar: string;
   language: string;
+  aiScope: string;
   role: string;
   description: string;
   stat: string;
-  videos: ContentVideo[];
 };
 
-export const contentChannels: ContentChannel[] = [
+export type Channel =
+  | (ChannelBase & { mediaLayout: "chips"; videos: ContentVideo[] })
+  | (ChannelBase & { mediaLayout: "marquee"; albums: Album[] });
+
+export const channels: Channel[] = [
   {
     id: "momomaru",
     name: "모모마루 (もも丸)",
     handle: "@momomaru_channel",
     url: "https://www.youtube.com/@momomaru_channel/",
+    avatar: "/assets/content/momomaru-avatar.jpg",
     language: "일본어",
+    aiScope: "영상 생성 AI 활용 · 음성은 보이스 체인저(AI 음성 아님)",
     role: "기획 · AI 영상 생성 · 편집 · 채널 운영",
     description:
       "생성형 AI 영상 도구가 막 등장했던 초기에, 일본어권을 타깃으로 직접 기획한 동물 캐릭터 숏폼 콘텐츠입니다. 캐릭터 설정과 대사 기획부터 AI 영상 생성, 편집, 업로드까지 전 과정을 혼자 운영했습니다.",
     stat: "롱폼 2개 · 숏폼 4개(롱폼 발췌)",
+    mediaLayout: "chips",
     videos: [
       {
         title: "【フル】会社員あるある｜エレベーターで上司と二人きりはムリすぎww",
@@ -322,11 +337,14 @@ export const contentChannels: ContentChannel[] = [
     name: "뇌에 때려박기",
     handle: "@뇌에때려박기",
     url: "https://www.youtube.com/@뇌에때려박기",
+    avatar: "/assets/content/noe-ddaeryeo-bakgi-avatar.jpg",
     language: "한국어",
+    aiScope: "음성·영상 전체 AI 생성",
     role: "기획 · 대본 · AI 이미지 생성 · 편집 · 채널 운영",
     description:
       "생활 정보와 시사 이슈를 짧게 정리해 훑어보는 한국형 숏폼 콘텐츠입니다. 대본 작성부터 AI 이미지 생성, 편집, 업로드까지 동일한 포맷으로 반복하며 양산형 숏폼 제작 파이프라인을 실험했습니다.",
-    stat: "숏폼 56개 · 구독자 68명",
+    stat: "숏폼 56개",
+    mediaLayout: "chips",
     videos: [
       {
         title: "열사병 이렇게 막아야 합니다!",
@@ -348,53 +366,55 @@ export const contentChannels: ContentChannel[] = [
       },
     ],
   },
-];
-
-export const composition = {
-  channel: "별수아",
-  url: "https://youtube.com/@byeolsua",
-  note: "피아노 기반 자작곡을 작곡·연주하며 화성과 다이내믹을 다루는 감각을 쌓고 있습니다. 이 감각은 보이스·효과음·배경음악의 균형을 판단하는 데 그대로 이어집니다.",
-};
-
-export type Album = {
-  title: string;
-  cover: string;
-};
-
-export const compositionAlbums: Album[] = [
-  { title: "가시는 듯 돌아오소서", cover: "/assets/composition/albums/album-01.jpg" },
-  { title: "검은 고양이는 달에게 말을 걸었다", cover: "/assets/composition/albums/album-02.jpg" },
-  { title: "계절이 돌고 돌아도", cover: "/assets/composition/albums/album-03.jpg" },
-  { title: "곰인형의 하루", cover: "/assets/composition/albums/album-04.jpg" },
-  { title: "기다림의 끝에서", cover: "/assets/composition/albums/album-05.jpg" },
-  { title: "꿈을 찾아 가고 있어", cover: "/assets/composition/albums/album-06.jpg" },
-  { title: "너가 보고싶은 밤", cover: "/assets/composition/albums/album-07.jpg" },
-  { title: "너를 그리다", cover: "/assets/composition/albums/album-08.jpg" },
-  { title: "너에게 가는 건 아직 용기가 필요해", cover: "/assets/composition/albums/album-09.jpg" },
-  { title: "마지막 세게의 새벽", cover: "/assets/composition/albums/album-10.jpg" },
-  { title: "마지막 순간에 홀로 서다", cover: "/assets/composition/albums/album-11.jpg" },
-  { title: "메리크리스마스, 너는 옆에 없지만", cover: "/assets/composition/albums/album-12.jpg" },
-  { title: "모든 날이 아름답길", cover: "/assets/composition/albums/album-13.jpg" },
-  { title: "발레리나를 떠나간 장난감 병정", cover: "/assets/composition/albums/album-14.jpg" },
-  { title: "벚꽃이 흩날리던 날", cover: "/assets/composition/albums/album-15.jpg" },
-  { title: "별 하나 그리고 밤", cover: "/assets/composition/albums/album-16.jpg" },
-  { title: "별을 따라 가는 곳 마다", cover: "/assets/composition/albums/album-17.jpg" },
-  { title: "별의 노래", cover: "/assets/composition/albums/album-18.jpg" },
-  { title: "봄이 오기 전에", cover: "/assets/composition/albums/album-19.jpg" },
-  { title: "사랑이 떠난 빈자리에 남아", cover: "/assets/composition/albums/album-20.jpg" },
-  { title: "시간 여행자", cover: "/assets/composition/albums/album-21.jpg" },
-  { title: "안녕! 크리스마스", cover: "/assets/composition/albums/album-22.jpg" },
-  { title: "어느 여름 끝에", cover: "/assets/composition/albums/album-23.jpg" },
-  { title: "어둠을 걷는 아이", cover: "/assets/composition/albums/album-24.jpg" },
-  { title: "어서와요! 마녀의집", cover: "/assets/composition/albums/album-25.jpg" },
-  { title: "오늘 하루도 수고했어", cover: "/assets/composition/albums/album-26.jpg" },
-  { title: "이 겨울은 가도 그대, 떠나지 마세요", cover: "/assets/composition/albums/album-27.jpg" },
-  { title: "잊혀지지 않는 것들", cover: "/assets/composition/albums/album-28.jpg" },
-  { title: "장난감 병정을 사랑한 발레리나", cover: "/assets/composition/albums/album-29.jpg" },
-  { title: "지난 날, 아름답게 슬픈", cover: "/assets/composition/albums/album-30.jpg" },
-  { title: "크리스마스 이브니까", cover: "/assets/composition/albums/album-31.jpg" },
-  { title: "크리스마스의 밤", cover: "/assets/composition/albums/album-32.jpg" },
-  { title: "흐르는 달빛 아래", cover: "/assets/composition/albums/album-33.jpg" },
+  {
+    id: "byeolsua",
+    name: "별수아",
+    handle: "@byeolsua",
+    url: "https://youtube.com/@byeolsua",
+    avatar: "/assets/composition/byeolsua-logo.jpg",
+    language: "피아노 연주곡",
+    aiScope: "작곡·편곡·연주는 직접, 커버 아트만 AI 생성",
+    role: "작곡 · 연주 · 커버 아트 디렉션",
+    description:
+      "피아노 기반 자작곡을 작곡·연주하며 화성과 다이내믹을 다루는 감각을 쌓고 있습니다. 이 감각은 보이스·효과음·배경음악의 균형을 판단하는 데 그대로 이어집니다.",
+    stat: "자작곡 33곡",
+    mediaLayout: "marquee",
+    albums: [
+      { title: "가시는 듯 돌아오소서", cover: "/assets/composition/albums/album-01.jpg" },
+      { title: "검은 고양이는 달에게 말을 걸었다", cover: "/assets/composition/albums/album-02.jpg" },
+      { title: "계절이 돌고 돌아도", cover: "/assets/composition/albums/album-03.jpg" },
+      { title: "곰인형의 하루", cover: "/assets/composition/albums/album-04.jpg" },
+      { title: "기다림의 끝에서", cover: "/assets/composition/albums/album-05.jpg" },
+      { title: "꿈을 찾아 가고 있어", cover: "/assets/composition/albums/album-06.jpg" },
+      { title: "너가 보고싶은 밤", cover: "/assets/composition/albums/album-07.jpg" },
+      { title: "너를 그리다", cover: "/assets/composition/albums/album-08.jpg" },
+      { title: "너에게 가는 건 아직 용기가 필요해", cover: "/assets/composition/albums/album-09.jpg" },
+      { title: "마지막 세게의 새벽", cover: "/assets/composition/albums/album-10.jpg" },
+      { title: "마지막 순간에 홀로 서다", cover: "/assets/composition/albums/album-11.jpg" },
+      { title: "메리크리스마스, 너는 옆에 없지만", cover: "/assets/composition/albums/album-12.jpg" },
+      { title: "모든 날이 아름답길", cover: "/assets/composition/albums/album-13.jpg" },
+      { title: "발레리나를 떠나간 장난감 병정", cover: "/assets/composition/albums/album-14.jpg" },
+      { title: "벚꽃이 흩날리던 날", cover: "/assets/composition/albums/album-15.jpg" },
+      { title: "별 하나 그리고 밤", cover: "/assets/composition/albums/album-16.jpg" },
+      { title: "별을 따라 가는 곳 마다", cover: "/assets/composition/albums/album-17.jpg" },
+      { title: "별의 노래", cover: "/assets/composition/albums/album-18.jpg" },
+      { title: "봄이 오기 전에", cover: "/assets/composition/albums/album-19.jpg" },
+      { title: "사랑이 떠난 빈자리에 남아", cover: "/assets/composition/albums/album-20.jpg" },
+      { title: "시간 여행자", cover: "/assets/composition/albums/album-21.jpg" },
+      { title: "안녕! 크리스마스", cover: "/assets/composition/albums/album-22.jpg" },
+      { title: "어느 여름 끝에", cover: "/assets/composition/albums/album-23.jpg" },
+      { title: "어둠을 걷는 아이", cover: "/assets/composition/albums/album-24.jpg" },
+      { title: "어서와요! 마녀의집", cover: "/assets/composition/albums/album-25.jpg" },
+      { title: "오늘 하루도 수고했어", cover: "/assets/composition/albums/album-26.jpg" },
+      { title: "이 겨울은 가도 그대, 떠나지 마세요", cover: "/assets/composition/albums/album-27.jpg" },
+      { title: "잊혀지지 않는 것들", cover: "/assets/composition/albums/album-28.jpg" },
+      { title: "장난감 병정을 사랑한 발레리나", cover: "/assets/composition/albums/album-29.jpg" },
+      { title: "지난 날, 아름답게 슬픈", cover: "/assets/composition/albums/album-30.jpg" },
+      { title: "크리스마스 이브니까", cover: "/assets/composition/albums/album-31.jpg" },
+      { title: "크리스마스의 밤", cover: "/assets/composition/albums/album-32.jpg" },
+      { title: "흐르는 달빛 아래", cover: "/assets/composition/albums/album-33.jpg" },
+    ],
+  },
 ];
 
 export const profile = {

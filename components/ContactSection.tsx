@@ -26,7 +26,7 @@ export function ContactSection() {
 
   return (
     <section className={styles.contactSection} id="contact" aria-labelledby="contact-title">
-      <p className={styles.kicker} id="contact-title"><span>07</span> Contact</p>
+      <p className={styles.kicker} id="contact-title"><span>06</span> Contact</p>
       <button className={styles.contactMail} type="button" onClick={copyEmail} aria-label={`${profile.email} 클립보드에 복사`}>
         <strong>{profile.nameKo}</strong>
         <span>{profile.nameEn}</span>
