@@ -89,7 +89,12 @@ function CaseStudyCard({ project }: { project: Project }) {
                   aria-label={`${i + 1} / ${images.length}`}
                   aria-hidden={i !== slide}
                 >
-                  <Image src={assetPath(src)} alt="" fill sizes="(max-width: 1024px) 100vw, 45vw" />
+                  <Image
+                    src={assetPath(src)}
+                    alt={project.galleryLabels?.[i] ?? `${project.title} 스크린샷`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 45vw"
+                  />
                   {project.galleryLabels?.[i] && <span className={styles.caseStudyMediaLabel}>{project.galleryLabels[i]}</span>}
                 </div>
               ))}

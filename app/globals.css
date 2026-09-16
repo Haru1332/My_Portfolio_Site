@@ -11,9 +11,9 @@
   --accent-ai: #5fa3b8;
   --accent: var(--accent-sound);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --font-sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-serif: "Noto Serif KR", "Batang", serif;
-  --font-latin: "Arial Narrow", "Noto Sans KR", sans-serif;
+  --font-sans: var(--font-sans-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-serif: var(--font-serif-kr), "Apple SD Gothic Neo", "Malgun Gothic", serif;
+  --font-latin: "Arial Narrow", var(--font-sans-kr), sans-serif;
   color: var(--ivory);
   background: var(--black);
   font-family: var(--font-sans);

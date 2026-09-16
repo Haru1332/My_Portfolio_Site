@@ -143,9 +143,14 @@ export function WorksSection({ id, index, kicker, heading, countLabel, projects,
               />
             ) : activeProject.gallery && activeProject.gallery.length > 1 ? (
               <div className={styles.dialogGallery}>
-                {activeProject.gallery.map((src) => (
+                {activeProject.gallery.map((src, i) => (
                   <div key={src} className={styles.dialogGalleryItem}>
-                    <Image src={assetPath(src)} alt="" fill sizes="(max-width: 1024px) 50vw, 33vw" />
+                    <Image
+                      src={assetPath(src)}
+                      alt={activeProject.galleryLabels?.[i] ?? `${activeProject.title} 스크린샷`}
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 33vw"
+                    />
                   </div>
                 ))}
               </div>
@@ -153,7 +158,7 @@ export function WorksSection({ id, index, kicker, heading, countLabel, projects,
               <div className={styles.dialogImage}>
                 <Image
                   src={dialogThumbnail.startsWith("http") ? dialogThumbnail : assetPath(dialogThumbnail)}
-                  alt=""
+                  alt={activeProject.title}
                   fill
                   unoptimized={dialogThumbnail.startsWith("http")}
                   sizes="(max-width: 1024px) 100vw, 66vw"
