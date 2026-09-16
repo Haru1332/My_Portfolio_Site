@@ -1,11 +1,15 @@
 import Image from "next/image";
-import { composition } from "@/content/portfolio";
+import { composition, compositionAlbums } from "@/content/portfolio";
 import { assetPath } from "@/lib/asset-path";
 import styles from "@/app/page.module.css";
 
 const KEY_COUNT = 24;
+const MARQUEE_SECONDS_PER_ITEM = 2.6;
 
 export function CompositionSection() {
+  const marqueeAlbums = [...compositionAlbums, ...compositionAlbums];
+  const duration = `${(compositionAlbums.length * MARQUEE_SECONDS_PER_ITEM).toFixed(1)}s`;
+
   return (
     <section className={styles.compositionSection} id="composition" aria-labelledby="composition-title">
       <div className={styles.compositionKeys} aria-hidden="true">
@@ -30,6 +34,17 @@ export function CompositionSection() {
         >
           <Image src={assetPath("/assets/composition/byeolsua-logo.jpg")} alt={`${composition.channel} 로고`} fill sizes="(max-width: 1024px) 140px, 240px" />
         </a>
+      </div>
+
+      <div className={styles.compositionAlbums} aria-hidden="true">
+        <div className={styles.compositionAlbumsTrack} style={{ "--marquee-duration": duration } as React.CSSProperties}>
+          {marqueeAlbums.map((album, index) => (
+            <span key={`${album.cover}-${index}`} className={styles.compositionAlbumCover}>
+              <Image src={assetPath(album.cover)} alt="" fill sizes="140px" loading="eager" />
+              <em>{album.title}</em>
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
