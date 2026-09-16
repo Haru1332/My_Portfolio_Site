@@ -28,17 +28,17 @@ export default function Home() {
           countLabel={<>AI · AX<br />Case Studies</>}
           projects={aiProjects}
         />
+        <AiContentSection id="ai-content" index="04" channels={contentChannels} />
+        <CompositionSection id="composition" index="05" channel={compositionChannel} />
         <WorksSection
           id="sound-works"
-          index="04"
+          index="06"
           kicker="Sound Design Works"
           heading="사운드 디자인 작업"
           countLabel={<>Full Sound<br />Design</>}
           projects={soundProjects}
           track="sound"
         />
-        <CompositionSection id="composition" index="05" channel={compositionChannel} />
-        <AiContentSection id="ai-content" index="06" channels={contentChannels} />
         <ContactSection />
       </main>
     </>
