@@ -1,12 +1,13 @@
+import { AiContentSection } from "@/components/AiContentSection";
 import { AiWorksSection } from "@/components/AiWorksSection";
 import { CareerSection } from "@/components/CareerSection";
-import { ChannelsSection } from "@/components/ChannelsSection";
+import { CompositionSection } from "@/components/CompositionSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { WorksSection } from "@/components/WorksSection";
-import { aiProjects, channels, soundProjects } from "@/content/portfolio";
+import { aiProjects, compositionChannel, contentChannels, soundProjects } from "@/content/portfolio";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -36,7 +37,8 @@ export default function Home() {
           projects={soundProjects}
           track="sound"
         />
-        <ChannelsSection id="channels" index="05" channels={channels} />
+        <CompositionSection id="composition" index="05" channel={compositionChannel} />
+        <AiContentSection id="ai-content" index="06" channels={contentChannels} />
         <ContactSection />
       </main>
     </>

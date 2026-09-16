@@ -291,13 +291,15 @@ type ChannelBase = {
   role: string;
   description: string;
   stat: string;
+  /** Year the channel's first content went up, e.g. "2025". Omit when not relevant. */
+  since?: string;
 };
 
 export type Channel =
   | (ChannelBase & { mediaLayout: "chips"; videos: ContentVideo[] })
   | (ChannelBase & { mediaLayout: "marquee"; albums: Album[] });
 
-export const channels: Channel[] = [
+export const contentChannels: Channel[] = [
   {
     id: "momomaru",
     name: "모모마루 (もも丸)",
@@ -305,7 +307,8 @@ export const channels: Channel[] = [
     url: "https://www.youtube.com/@momomaru_channel/",
     avatar: "/assets/content/momomaru-avatar.jpg",
     language: "일본어",
-    aiScope: "영상 생성 AI 활용 · 음성은 보이스 체인저(AI 음성 아님)",
+    since: "2025",
+    aiScope: "영상 생성 AI 활용 · 음성은 보이스 체인저",
     role: "기획 · AI 영상 생성 · 편집 · 채널 운영",
     description:
       "생성형 AI 영상 도구가 막 등장했던 초기에, 일본어권을 타깃으로 직접 기획한 동물 캐릭터 숏폼 콘텐츠입니다. 캐릭터 설정과 대사 기획부터 AI 영상 생성, 편집, 업로드까지 전 과정을 혼자 운영했습니다.",
@@ -339,6 +342,7 @@ export const channels: Channel[] = [
     url: "https://www.youtube.com/@뇌에때려박기",
     avatar: "/assets/content/noe-ddaeryeo-bakgi-avatar.jpg",
     language: "한국어",
+    since: "2025",
     aiScope: "음성·영상 전체 AI 생성",
     role: "기획 · 대본 · AI 이미지 생성 · 편집 · 채널 운영",
     description:
@@ -366,7 +370,9 @@ export const channels: Channel[] = [
       },
     ],
   },
-  {
+];
+
+export const compositionChannel: Channel = {
     id: "byeolsua",
     name: "별수아",
     handle: "@byeolsua",
@@ -377,45 +383,56 @@ export const channels: Channel[] = [
     role: "작곡 · 연주 · 커버 아트 디렉션",
     description:
       "피아노 기반 자작곡을 작곡·연주하며 화성과 다이내믹을 다루는 감각을 쌓고 있습니다. 이 감각은 보이스·효과음·배경음악의 균형을 판단하는 데 그대로 이어집니다.",
-    stat: "자작곡 33곡",
+    stat: "자작곡 45곡",
     mediaLayout: "marquee",
     albums: [
-      { title: "가시는 듯 돌아오소서", cover: "/assets/composition/albums/album-01.jpg" },
-      { title: "검은 고양이는 달에게 말을 걸었다", cover: "/assets/composition/albums/album-02.jpg" },
-      { title: "계절이 돌고 돌아도", cover: "/assets/composition/albums/album-03.jpg" },
-      { title: "곰인형의 하루", cover: "/assets/composition/albums/album-04.jpg" },
-      { title: "기다림의 끝에서", cover: "/assets/composition/albums/album-05.jpg" },
-      { title: "꿈을 찾아 가고 있어", cover: "/assets/composition/albums/album-06.jpg" },
-      { title: "너가 보고싶은 밤", cover: "/assets/composition/albums/album-07.jpg" },
-      { title: "너를 그리다", cover: "/assets/composition/albums/album-08.jpg" },
-      { title: "너에게 가는 건 아직 용기가 필요해", cover: "/assets/composition/albums/album-09.jpg" },
-      { title: "마지막 세게의 새벽", cover: "/assets/composition/albums/album-10.jpg" },
-      { title: "마지막 순간에 홀로 서다", cover: "/assets/composition/albums/album-11.jpg" },
-      { title: "메리크리스마스, 너는 옆에 없지만", cover: "/assets/composition/albums/album-12.jpg" },
-      { title: "모든 날이 아름답길", cover: "/assets/composition/albums/album-13.jpg" },
-      { title: "발레리나를 떠나간 장난감 병정", cover: "/assets/composition/albums/album-14.jpg" },
-      { title: "벚꽃이 흩날리던 날", cover: "/assets/composition/albums/album-15.jpg" },
-      { title: "별 하나 그리고 밤", cover: "/assets/composition/albums/album-16.jpg" },
-      { title: "별을 따라 가는 곳 마다", cover: "/assets/composition/albums/album-17.jpg" },
-      { title: "별의 노래", cover: "/assets/composition/albums/album-18.jpg" },
-      { title: "봄이 오기 전에", cover: "/assets/composition/albums/album-19.jpg" },
-      { title: "사랑이 떠난 빈자리에 남아", cover: "/assets/composition/albums/album-20.jpg" },
-      { title: "시간 여행자", cover: "/assets/composition/albums/album-21.jpg" },
-      { title: "안녕! 크리스마스", cover: "/assets/composition/albums/album-22.jpg" },
-      { title: "어느 여름 끝에", cover: "/assets/composition/albums/album-23.jpg" },
-      { title: "어둠을 걷는 아이", cover: "/assets/composition/albums/album-24.jpg" },
-      { title: "어서와요! 마녀의집", cover: "/assets/composition/albums/album-25.jpg" },
-      { title: "오늘 하루도 수고했어", cover: "/assets/composition/albums/album-26.jpg" },
-      { title: "이 겨울은 가도 그대, 떠나지 마세요", cover: "/assets/composition/albums/album-27.jpg" },
-      { title: "잊혀지지 않는 것들", cover: "/assets/composition/albums/album-28.jpg" },
-      { title: "장난감 병정을 사랑한 발레리나", cover: "/assets/composition/albums/album-29.jpg" },
-      { title: "지난 날, 아름답게 슬픈", cover: "/assets/composition/albums/album-30.jpg" },
-      { title: "크리스마스 이브니까", cover: "/assets/composition/albums/album-31.jpg" },
-      { title: "크리스마스의 밤", cover: "/assets/composition/albums/album-32.jpg" },
-      { title: "흐르는 달빛 아래", cover: "/assets/composition/albums/album-33.jpg" },
+      { title: "가시는 듯 돌아오소서", cover: "/assets/composition/albums/album-01.jpg", url: "https://youtu.be/6SGG_6fu5Do" },
+      { title: "검은 고양이는 달에게 말을 걸었다", cover: "/assets/composition/albums/album-02.jpg", url: "https://youtu.be/BDpyt--wTkM" },
+      { title: "계절이 돌고 돌아도", cover: "/assets/composition/albums/album-03.jpg", url: "https://youtu.be/TDCeYNpWbLA" },
+      { title: "곰인형의 하루", cover: "/assets/composition/albums/album-04.jpg", url: "https://youtu.be/kBP15PmTMk8" },
+      { title: "기다림의 끝에서", cover: "/assets/composition/albums/album-05.jpg", url: "https://youtu.be/LRg0IodsFP4" },
+      { title: "꿈을 찾아 가고 있어", cover: "/assets/composition/albums/album-06.jpg", url: "https://youtu.be/P_6QWIaqaxk" },
+      { title: "너가 보고싶은 밤", cover: "/assets/composition/albums/album-07.jpg", url: "https://youtu.be/-BXnuOsRZB8" },
+      { title: "너를 그리다", cover: "/assets/composition/albums/album-08.jpg", url: "https://youtu.be/VS4i_M53cd8" },
+      { title: "너에게 가는 건 아직 용기가 필요해", cover: "/assets/composition/albums/album-09.jpg", url: "https://youtu.be/GHqvbrbsk9c" },
+      { title: "마지막 세게의 새벽", cover: "/assets/composition/albums/album-10.jpg", url: "https://youtu.be/28L_sq-oWvE" },
+      { title: "마지막 순간에 홀로 서다", cover: "/assets/composition/albums/album-11.jpg", url: "https://youtu.be/BiB4TGDDiXo" },
+      { title: "메리크리스마스, 너는 옆에 없지만", cover: "/assets/composition/albums/album-12.jpg", url: "https://youtu.be/CgBn3u1MvRo" },
+      { title: "모든 날이 아름답길", cover: "/assets/composition/albums/album-13.jpg", url: "https://youtu.be/Dhov4ldoD-o" },
+      { title: "발레리나를 떠나간 장난감 병정", cover: "/assets/composition/albums/album-14.jpg", url: "https://youtu.be/2-cubzbBq_s" },
+      { title: "벚꽃이 흩날리던 날", cover: "/assets/composition/albums/album-15.jpg", url: "https://youtu.be/lgLTvk7khGQ" },
+      { title: "별 하나 그리고 밤", cover: "/assets/composition/albums/album-16.jpg", url: "https://youtu.be/TlyWf61r0bg" },
+      { title: "별을 따라 가는 곳 마다", cover: "/assets/composition/albums/album-17.jpg", url: "https://youtu.be/CAjv36B7700" },
+      { title: "별의 노래", cover: "/assets/composition/albums/album-18.jpg", url: "https://youtu.be/tUVgDBqr8fk" },
+      { title: "봄이 오기 전에", cover: "/assets/composition/albums/album-19.jpg", url: "https://youtu.be/uqEXb0h83U8" },
+      { title: "사랑이 떠난 빈자리에 남아", cover: "/assets/composition/albums/album-20.jpg", url: "https://youtu.be/HkcOoJwKAtw" },
+      { title: "시간 여행자", cover: "/assets/composition/albums/album-21.jpg", url: "https://youtu.be/yBdndndiLUk" },
+      { title: "안녕! 크리스마스", cover: "/assets/composition/albums/album-22.jpg", url: "https://youtu.be/dnAaqyX-Gzg" },
+      { title: "어느 여름 끝에", cover: "/assets/composition/albums/album-23.jpg", url: "https://youtu.be/cVKETZZrRNg" },
+      { title: "어둠을 걷는 아이", cover: "/assets/composition/albums/album-24.jpg", url: "https://youtu.be/r3dst6NUhJk" },
+      { title: "어서와요! 마녀의집", cover: "/assets/composition/albums/album-25.jpg", url: "https://youtu.be/EVJHvZxOy7g" },
+      { title: "오늘 하루도 수고했어", cover: "/assets/composition/albums/album-26.jpg", url: "https://youtu.be/EMoqd-kb6tc" },
+      { title: "이 겨울은 가도 그대, 떠나지 마세요", cover: "/assets/composition/albums/album-27.jpg", url: "https://youtu.be/NY0025QmnMQ" },
+      { title: "잊혀지지 않는 것들", cover: "/assets/composition/albums/album-28.jpg", url: "https://youtu.be/vCVoZxJC6wI" },
+      { title: "장난감 병정을 사랑한 발레리나", cover: "/assets/composition/albums/album-29.jpg", url: "https://youtu.be/bMs2RhHWILk" },
+      { title: "지난 날, 아름답게 슬픈", cover: "/assets/composition/albums/album-30.jpg", url: "https://youtu.be/XXWMsB1m-SU" },
+      { title: "크리스마스 이브니까", cover: "/assets/composition/albums/album-31.jpg", url: "https://youtu.be/j0npfYW2iRI" },
+      { title: "크리스마스의 밤", cover: "/assets/composition/albums/album-32.jpg", url: "https://youtu.be/ge7GmV6K6HM" },
+      { title: "흐르는 달빛 아래", cover: "/assets/composition/albums/album-33.jpg", url: "https://youtu.be/ShzVWArTLIQ" },
+      { title: "그날 밤, 달은 울고 있었어", cover: "/assets/composition/albums/album-34.jpg", url: "https://youtu.be/NJUw8JG4KCg" },
+      { title: "너에게 이별을 말했어", cover: "/assets/composition/albums/album-35.jpg", url: "https://youtu.be/b-ik6OALfbY" },
+      { title: "달이 잠기던 밤의 끝에서", cover: "/assets/composition/albums/album-36.jpg", url: "https://youtu.be/cuezkvnI4YI" },
+      { title: "시간이 지나도 잊지 않을게", cover: "/assets/composition/albums/album-37.jpg", url: "https://youtu.be/4cNgkZYZT6U" },
+      { title: "혼자 남은 방, 차가운 온기", cover: "/assets/composition/albums/album-38.jpg", url: "https://youtu.be/N-3GTUudIis" },
+      { title: "비밀의 정원", cover: "/assets/composition/albums/album-39.jpg", url: "https://youtu.be/69svdQA4hQw" },
+      { title: "겨울소리", cover: "/assets/composition/albums/album-40.jpg", url: "https://youtu.be/45MgUO8aGWg" },
+      { title: "시간의 성소, 별의 기록실", cover: "/assets/composition/albums/album-41.jpg", url: "https://youtu.be/qsiE2Djty48" },
+      { title: "달빛 정령의 회랑", cover: "/assets/composition/albums/album-42.jpg", url: "https://youtu.be/XdQnPVNyXDI" },
+      { title: "월화마을 입구, 벚꽃나루", cover: "/assets/composition/albums/album-43.jpg", url: "https://youtu.be/OvvtoeDLZzY" },
+      { title: "멀어지는 것들", cover: "/assets/composition/albums/album-44.jpg", url: "https://youtu.be/mgNAI-FzzKs" },
+      { title: "그때, 우리가 꿈꾸던 것", cover: "/assets/composition/albums/album-45.jpg", url: "https://youtu.be/3tFxGUa6ZtQ" },
     ],
-  },
-];
+};
 
 export const profile = {
   nameKo: "김현수",

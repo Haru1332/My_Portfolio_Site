@@ -8,7 +8,8 @@ const navigation = [
   ["career", "Career"],
   ["ai-works", "AI · AX"],
   ["sound-works", "Sound Design"],
-  ["channels", "Channels"],
+  ["composition", "Composition"],
+  ["ai-content", "AI Content"],
   ["contact", "Contact"],
 ] as const;
 
@@ -101,7 +102,7 @@ export function Header() {
           <a
             key={id}
             href={`#${id}`}
-            data-track={id === "ai-works" ? "ai" : id === "sound-works" ? "sound" : undefined}
+            data-track={id === "ai-works" || id === "ai-content" ? "ai" : id === "sound-works" ? "sound" : undefined}
             aria-current={activeId === id ? "location" : undefined}
             onClick={() => setIsMenuOpen(false)}
           >
