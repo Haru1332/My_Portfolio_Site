@@ -125,10 +125,9 @@ export const capabilities = {
   tools: [
     "Reaper",
     "Pro Tools",
+    "Premiere Pro",
+    "CapCut",
     "Claude Code · Codex CLI",
-    "Python · PDF Parser · OCR",
-    "fast-whisper · WhisperX",
-    "Figma",
   ],
 };
 
