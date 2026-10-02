@@ -40,7 +40,7 @@ export function ContactSection() {
       </a>
       <div className={styles.rightsNotice}>
         <span>Notice</span>
-        <p>비공개 실무 프로젝트는 담당 역할과 범위만 소개했습니다.<br />이 사이트는 방문 통계를 위해 Google Analytics를 사용합니다.</p>
+        <p>비공개 실무 프로젝트는 담당 역할과 범위만 소개했습니다.</p>
       </div>
       <a className={styles.backToTop} href="#profile" aria-label="맨 위로 이동">
         <span aria-hidden="true">↑</span>

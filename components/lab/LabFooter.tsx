@@ -23,7 +23,7 @@ export function LabFooter() {
         </div>
       </div>
       <div className={styles.footerBottom}>
-        <span>© 2026 Haru Lab. All rights reserved. · 방문 통계 수집에 Google Analytics를 사용합니다.</span>
+        <span>© 2026 Haru Lab. All rights reserved.</span>
         <a href={`mailto:${profile.email}`}>{profile.email}</a>
       </div>
     </footer>
