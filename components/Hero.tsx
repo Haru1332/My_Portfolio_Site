@@ -84,7 +84,7 @@ export function Hero() {
         <div className={styles.heroCopy}>
           <p className={styles.kicker}><span>01</span> Profile</p>
           <h1 id="hero-title"><span>Sound</span><span>× AI</span></h1>
-          <p>사운드 디자인과 AI·AX 사이에서, 장면과 제작 공정에 무엇이 필요한지<br />먼저 판단하고 직접 만듭니다.</p>
+          <p>게임·오디오드라마 사운드를 만들고, 그 제작 과정을 AI로 자동화합니다.</p>
         </div>
         <div className={styles.heroCredit}>
           <span>{profile.roleLine}</span><strong>{profile.nameKo}</strong><small>{profile.nameEn}</small>

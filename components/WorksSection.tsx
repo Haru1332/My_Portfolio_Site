@@ -8,6 +8,7 @@ import { assetPath } from "@/lib/asset-path";
 import { getYouTubeEmbedUrl, getYouTubeThumbnailUrl } from "@/lib/youtube";
 import { TrackBadge } from "@/components/TrackBadge";
 import styles from "@/app/page.module.css";
+import { track as trackEvent } from "@/lib/analytics";
 
 function projectThumbnail(project: Project) {
   if (project.thumbnail) return project.thumbnail;
@@ -70,6 +71,7 @@ export function WorksSection({ id, index, kicker, heading, countLabel, projects,
   function openProject(project: Project, event: MouseEvent<HTMLElement>) {
     setActiveProject(project);
     setIsOpen(true);
+    trackEvent("project_open", { title: project.shortTitle });
     lastTrigger.current = event.currentTarget;
     window.requestAnimationFrame(() => dialogRef.current?.showModal());
   }

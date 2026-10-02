@@ -2,6 +2,7 @@
 
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { getYouTubeEmbedUrl } from "@/lib/youtube";
+import { track } from "@/lib/analytics";
 import styles from "@/app/page.module.css";
 
 export type VideoDialogHandle = { open: (title: string, url: string) => void };
@@ -15,6 +16,7 @@ export const VideoDialog = forwardRef<VideoDialogHandle>(function VideoDialog(_p
   useImperativeHandle(ref, () => ({
     open(title: string, url: string) {
       setActive({ title, url });
+      track("video_play", { title });
       window.requestAnimationFrame(() => dialogRef.current?.showModal());
     },
   }));

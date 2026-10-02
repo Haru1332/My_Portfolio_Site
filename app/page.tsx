@@ -7,7 +7,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { WorksSection } from "@/components/WorksSection";
-import { aiProjects, compositionChannel, contentChannels, soundProjects } from "@/content/portfolio";
+import { aiProjects, appProjects, compositionChannel, contentChannels, soundProjects } from "@/content/portfolio";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -20,19 +20,29 @@ export default function Home() {
         <Hero />
         <CareerSection />
         <AiWorksSection
-          id="ai-works"
+          id="apps"
           index="03"
+          kicker="Personal Apps"
+          heading="개인 앱 개발"
+          subtitle="평소 불편했던 작업을 해결하려고 만든 앱입니다. 기획, 디자인, 개발을 혼자 했고 개발에는 Claude Code를 썼습니다."
+          countLabel={<>Personal<br />Apps</>}
+          projects={appProjects}
+          link={{ href: "/lab/", label: "Haru Lab 사이트 보기" }}
+        />
+        <AiWorksSection
+          id="ai-works"
+          index="04"
           kicker="AI · AX Works"
           heading="AI · AX 작업"
-          subtitle="실무 중 발견한 비효율을 바탕으로 개인적으로 기획·개발한 프로젝트입니다. 일부는 실제 제작 공정에 도입되었고, 일부는 회사에 제안한 단계이며, 회사의 공식 대외 발표 자료가 아닙니다."
+          subtitle="실무에서 반복되던 작업을 줄이려고 개인적으로 기획·개발한 프로젝트입니다. 회사의 공식 자료는 아닙니다."
           countLabel={<>AI · AX<br />Case Studies</>}
           projects={aiProjects}
         />
-        <AiContentSection id="ai-content" index="04" channels={contentChannels} />
-        <CompositionSection id="composition" index="05" channel={compositionChannel} />
+        <AiContentSection id="ai-content" index="05" channels={contentChannels} />
+        <CompositionSection id="composition" index="06" channel={compositionChannel} />
         <WorksSection
           id="sound-works"
-          index="06"
+          index="07"
           kicker="Sound Design Works"
           heading="사운드 디자인 작업"
           countLabel={<>Full Sound<br />Design</>}

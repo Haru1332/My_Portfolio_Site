@@ -37,6 +37,17 @@ export type Project = {
   featured?: boolean;
   tools?: ToolkitTool[];
   noteTag?: string;
+  /** Main features, shown as a short list under the summary. */
+  features?: AppFeature[];
+  /** Tech stack, shown as small tags. */
+  stack?: string[];
+  /** Internal path to a product page, e.g. "/lab/creator-assistant/". */
+  productUrl?: string;
+};
+
+export type AppFeature = {
+  name: string;
+  description: string;
 };
 
 export const careers: Career[] = [
@@ -49,23 +60,23 @@ export const careers: Career[] = [
     role: "오디오 엔지니어 · AX 프로젝트 리더",
     tracks: ["sound", "ai"],
     description:
-      "오디오북과 오디오드라마의 녹음 디렉팅부터 보이스 편집, 후반 검수까지 제작 전 과정을 이끌며, 반복 공정을 AI 도구로 자동화하는 AX 파이프라인을 함께 구축했습니다.",
+      "오디오북·오디오드라마의 녹음 디렉팅, 보이스 편집, 후반 검수를 맡았고, 반복되는 제작 작업을 AI 도구로 자동화했습니다.",
     highlightGroups: [
       {
         track: "sound",
         label: "Recording & Direction",
         items: [
           "오디오북·오디오드라마 성우 캐스팅 검토부터 녹음 연출, 편집, 후반 검수까지 작품 단위 제작을 총괄했습니다.",
-          "장르, 캐릭터 성격, 장면 분위기, 대사의 감정선에 맞춰 성우의 톤·호흡·속도·리듬을 조율했습니다.",
-          "보이스·효과음·배경음악의 밸런스를 설계해 오디오드라마의 장면 몰입도를 높였습니다.",
+          "장면과 캐릭터에 맞춰 성우의 톤, 호흡, 속도를 디렉팅했습니다.",
+          "오디오드라마의 보이스, 효과음, 배경음악 밸런스를 잡았습니다.",
         ],
       },
       {
         track: "ai",
         label: "AX Pipeline",
         items: [
-          "Reaper 스크립트와 로컬 ASR·LLM 모델을 활용해 반복 검수, 컷 편집, 자료 정리 공정을 자동화했습니다.",
-          "바이브코딩과 AI 코딩 에이전트로 업무 효율화 애플리케이션을 직접 개발해 제작 안정성을 높였습니다.",
+          "Reaper 스크립트와 로컬 ASR·LLM으로 검수, 컷 편집, 자료 정리를 자동화했습니다.",
+          "AI 코딩 에이전트로 제작에 쓰는 업무 도구를 직접 개발했습니다.",
         ],
       },
     ],
@@ -80,16 +91,16 @@ export const careers: Career[] = [
     role: "AI 오디오 엔지니어",
     tracks: ["ai"],
     description:
-      "게임 개발 전용 음성 AI 파이프라인을 구축하고, 생성형 음성 모델(TTS·VC·Singing Voice)의 품질을 분석해 연구진에게 개선 방향을 제시했습니다.",
+      "게임 개발용 음성 AI 파이프라인을 만들고, 생성형 음성 모델(TTS·VC·Singing Voice)의 품질을 평가해 연구팀에 개선점을 전달했습니다.",
     highlightGroups: [
       {
         track: "ai",
         label: "AI R&D & Production",
         items: [
-          "기획팀·사업부·계열사 사운드팀과 협업해 게임 장르별 음성 AI 도입 솔루션을 제안하고 구축했습니다.",
-          "모델 출력물의 기계음, 아티팩트, 발음 불안정, 톤 일관성 저하를 청감·스펙트로그램 기준으로 진단해 연구 방향성을 제시했습니다.",
-          "음색·피치·속도·감정 표현 파라미터를 튜닝해 AI 성우와 가상 캐릭터 보이스에 페르소나를 부여했습니다.",
-          "Figma로 음성 AI 서비스 UI/UX를 설계하고 Flutter 프론트엔드 구조를 이해해 개발팀과 소통했습니다.",
+          "기획팀, 사업부, 계열사 사운드팀과 함께 게임별 음성 AI 도입안을 만들고 적용했습니다.",
+          "모델 출력의 기계음, 아티팩트, 발음 불안정, 톤 흔들림을 청취와 스펙트로그램으로 찾아 연구팀에 피드백했습니다.",
+          "음색, 피치, 속도, 감정 파라미터를 조정해 AI 성우와 가상 캐릭터의 목소리 설정을 잡았습니다.",
+          "음성 AI 서비스 화면을 Figma로 설계하고, Flutter 개발팀과 구현 방식을 맞췄습니다.",
         ],
       },
     ],
@@ -104,15 +115,15 @@ export const careers: Career[] = [
     role: "오디오 엔지니어",
     tracks: ["sound"],
     description:
-      "클래식 공연, 기업 행사, 웨딩 등 다양한 라이브 환경에서 FOH 믹싱과 음향 시스템 운영을 담당했습니다.",
+      "클래식 공연, 기업 행사, 웨딩 현장의 FOH 믹싱과 음향 시스템 운영을 맡았습니다.",
     highlightGroups: [
       {
         track: "sound",
         label: "Live Sound Operating",
         items: [
-          "라움아트센터에서 클래식 공연·재즈 콘서트·대규모 예식의 FOH 믹싱과 음향 인프라를 구축·운영했습니다.",
-          "홀 특성에 맞춘 스피커 튜닝과 시그널 플로우 점검으로 무결점 사운드 환경을 조성했습니다.",
-          "외부 기술팀과의 정합성을 조율하는 기술 PM 역할을 겸했습니다.",
+          "라움아트센터에서 클래식·재즈 공연과 대규모 예식의 FOH 믹싱, 음향 시스템 세팅을 맡았습니다.",
+          "홀 특성에 맞춰 스피커를 튜닝하고 시그널 플로우를 점검했습니다.",
+          "외부 기술팀과 협업을 조율하는 기술 PM 역할도 맡았습니다.",
         ],
       },
     ],
@@ -142,28 +153,28 @@ export const productionToolkit: ToolkitTool[] = [
     icon: "📄",
     name: "원고 도우미",
     description:
-      "PDF 원고를 파싱하고 OCR로 보완해 캐릭터별 대사를 추출합니다. 하이라이트·밑줄을 인식해 성우 비용용 글자 수를 산출하고, 위치 정보를 바탕으로 Reaper에 캐릭터별 빈 아이템을 미리 배치합니다.",
+      "PDF 원고에서 캐릭터별 대사를 뽑습니다(OCR 보완). 하이라이트·밑줄을 인식해 성우 비용 산정용 글자 수를 세고, Reaper에 캐릭터별 빈 아이템을 미리 배치합니다.",
     tags: ["PDF Parser", "OCR", "Reaper API"],
   },
   {
     icon: "🎙️",
     name: "오디오 도우미",
     description:
-      "fast-whisper·WhisperX로 녹음본을 분석해 원고 도우미가 추출한 대사와 실제 녹음 구간을 매핑합니다. 원고 대비 오독 체크까지 함께 수행해 1차 검수와 컷 편집 기준을 빠르게 확보합니다.",
+      "fast-whisper·WhisperX로 녹음본을 분석해 원고의 대사와 실제 녹음 구간을 연결하고, 원고와 다르게 읽은 부분을 표시합니다. 1차 검수와 컷 편집에 씁니다.",
     tags: ["fast-whisper", "WhisperX", "Reaper Edit Auto"],
   },
   {
     icon: "👑",
     name: "순위 도우미",
     description:
-      "여러 도서 사이트의 주간 순위를 한 번에 수집해 제작 후보 탐색과 시장 흐름 파악을 돕습니다.",
+      "여러 도서 사이트의 주간 순위를 한 번에 모아, 제작할 작품을 고를 때 참고합니다.",
     tags: ["Web Crawler"],
   },
   {
     icon: "✍️",
     name: "프롬프트 도우미",
     description:
-      "편하게 입력한 자연어 요청을 로컬 SLM이 읽고 Markdown·XML·순서형 지시문으로 정리해, AI 도구에 익숙하지 않은 동료도 원하는 조건을 정확히 전달할 수 있도록 돕습니다.",
+      "평소 말로 적은 요청을 로컬 SLM이 Markdown·XML 형식의 지시문으로 바꿉니다. AI 도구에 익숙하지 않은 동료도 쓸 수 있게 만들었습니다.",
     tags: ["Local SLM", "Ollama"],
   },
 ];
@@ -180,7 +191,7 @@ export const aiProjects: Project[] = [
     thumbnail: "/assets/toolkit/willa-toolkit-hub.png",
     noteTag: "개인 프로젝트 · 실무 도입",
     summary:
-      "오디오 제작 실무 중 사운드 PD와 엔지니어가 반복적으로 수행하는 공정을 발견해 개인적으로 기획·개발한 툴킷입니다. Python 기반 도구와 AI 코딩 어시스턴트로 단계별 자동화했고, 완성 후 실제 제작 공정에 도입해 사용했습니다. 회사의 공식 제작 시스템이 아닌 개인이 만든 보조 도구이며, 원고와 녹음본 같은 민감한 제작 데이터가 외부로 나가지 않도록 로컬 실행을 기본 원칙으로 두었습니다.",
+      "사운드 PD와 엔지니어가 매번 손으로 하던 작업을 줄이려고 만든 Python 도구 모음입니다. AI 코딩 어시스턴트로 개발했고, 실제 제작에 도입해 썼습니다. 원고와 녹음본이 외부로 나가지 않도록 모두 로컬에서 실행됩니다.",
     tools: productionToolkit,
     featured: true,
   },
@@ -196,7 +207,7 @@ export const aiProjects: Project[] = [
     gallery: ["/assets/toolkit/reaper-full-timeline.png", "/assets/toolkit/reaper-track-placement.png"],
     galleryLabels: ["전체 타임라인", "캐릭터별 트랙 배치"],
     summary:
-      "오디오북 녹음 세션을 위해 Reaper 내부에서 동작하는 Lua·Python 스크립트를 직접 개발했습니다. 원고를 파싱하고 어노테이션으로 캐릭터를 구분해 트랙을 나누고, 각 대사 위치에 빈 아이템을 미리 배치합니다. 녹음이 진행되면 해당 아이템이 실제 녹음 파일로 자동 교체되고, 아직 녹음되지 않은 빈 아이템들은 뒤로 자동 밀려나며 정렬을 유지합니다. 이 밖에도 여러 리퍼 편의 기능을 스크립트로 구현해 적용했습니다.",
+      "오디오북 녹음 세션용 Reaper 스크립트(Lua·Python)입니다. 원고의 어노테이션으로 캐릭터를 구분해 트랙을 나누고, 대사 위치마다 빈 아이템을 미리 놓습니다. 녹음하면 빈 아이템이 녹음 파일로 바뀌고, 남은 아이템은 뒤로 밀려 순서가 유지됩니다. 그 밖의 편의 기능도 스크립트로 만들어 썼습니다.",
   },
   {
     id: "welaaon-ax-pipeline",
@@ -215,7 +226,7 @@ export const aiProjects: Project[] = [
     galleryLabels: ["OnAir · 스케줄 관리", "OnScript · 원고 정본화", "OnCue · 초벌 자동 편집"],
     noteTag: "개인 기획 · 회사 제안",
     summary:
-      "제작 현장에서 겪은 비효율을 바탕으로 개인적으로 기획한 6단계 AX 파이프라인 제안입니다. 소싱부터 오디오북 초벌 편집, BGM·효과음·목소리 변환까지 이어지는 프로세스를 설계해 회사에 제안했고, 아직 공식 도입된 시스템은 아닙니다. 그중 OnAir(스케줄·현황) · OnScript(원고 정본화) · OnCue(초벌 자동 편집) 3단계는 상세 설계와 프로토타입 개발까지 개인적으로 완료했고, 인력·장비·구독료 예산안까지 포함한 승인 요청서를 작성했습니다.",
+      "소싱부터 오디오북 초벌 편집, BGM·효과음·목소리 변환까지 이어지는 6단계 AX 파이프라인을 설계해 회사에 제안했습니다. 이 중 OnAir(스케줄·현황), OnScript(원고 정본화), OnCue(초벌 자동 편집)는 프로토타입까지 만들었고, 인력·장비·구독료 예산을 담은 승인 요청서도 작성했습니다.",
   },
   {
     id: "cinematic-trailer-redesign",
@@ -226,6 +237,64 @@ export const aiProjects: Project[] = [
     role: "AI Voice · Sound Design · Mix",
     tracks: ["ai", "sound"],
     youtubeUrl: "https://youtu.be/tyBvB5WCNko",
+  },
+];
+
+export const appProjects: Project[] = [
+  {
+    id: "creator-assistant",
+    order: "01",
+    title: "크리에이터 도우미 — 1인 크리에이터 콘텐츠 제작 앱",
+    shortTitle: "크리에이터 도우미",
+    category: "Web App · AI Content Workflow",
+    role: "Planning · Design · Development",
+    tracks: ["ai"],
+    thumbnail: "/assets/apps/creator-topics.png",
+    gallery: [
+      "/assets/apps/creator-topics.png",
+      "/assets/apps/creator-research.png",
+      "/assets/apps/creator-script.png",
+      "/assets/apps/creator-publish-check.png",
+      "/assets/apps/creator-reply-review.png",
+    ],
+    galleryLabels: ["주제 찾기", "리서치 · 출처 대조", "유튜브 대본", "발행 전 점검", "댓글 답글 검토"],
+    noteTag: "개인 프로젝트 · 개발 중",
+    summary:
+      "유튜브 채널을 운영하면서 혼자 하기 버거웠던 주제 찾기, 자료 조사, 대본, 댓글 답글을 하나로 묶은 웹앱입니다. AI가 가져온 인용문은 출처 원문과 대조하고, 게시 전에는 사람이 확인하도록 했습니다.",
+    features: [
+      { name: "주제 → 리서치 → 대본", description: "주제 추천, 인용문 원문 대조, 대본·블로그·쇼츠 초안 작성" },
+      { name: "지식 그래프 · 앱 비서", description: "옵시디언 노트 그래프, 노트를 참고해 답하는 AI 비서" },
+      { name: "댓글 답글", description: "YouTube·Instagram 댓글 답글 초안, 승인 후 공식 API로 게시" },
+    ],
+    stack: ["Next.js", "TypeScript", "SQLite", "Claude Code · Codex 엔진"],
+    productUrl: "/lab/creator-assistant/",
+  },
+  {
+    id: "sokssok",
+    order: "02",
+    title: "쏙쏙 — Windows 파일·폴더 정리 앱",
+    shortTitle: "쏙쏙",
+    category: "Desktop App · Windows",
+    role: "Planning · Design · Development",
+    tracks: ["ai"],
+    thumbnail: "/assets/apps/sokssok-home.png",
+    gallery: [
+      "/assets/apps/sokssok-home.png",
+      "/assets/apps/sokssok-rename.png",
+      "/assets/apps/sokssok-sort.png",
+      "/assets/apps/sokssok-ver.png",
+    ],
+    galleryLabels: ["폴더 스캔", "이름 정리 미리보기", "다단계 폴더 분류", "중복 · 버전 묶음"],
+    noteTag: "개인 프로젝트 · 실사용 중",
+    summary:
+      "다운로드·사진 폴더에 쌓인 파일과 'KakaoTalk_', '(1)', '_복사본'처럼 지저분한 이름을 정리하려고 만든 Windows 앱입니다. 실행 전에 결과를 미리 보여 주고, 실행한 작업은 되돌릴 수 있습니다. 설치 파일로 만들어 직접 쓰고 있습니다.",
+    features: [
+      { name: "이름 정리 · 폴더 분류", description: "반복 문구 일괄 삭제, 종류·날짜·키워드 기준 다단계 분류" },
+      { name: "중복 · 버전 묶음", description: "같은 파일, 화질만 다른 사진, '최종·진짜최종' 같은 버전 정리" },
+      { name: "변환 · 자동 감시 · 되돌리기", description: "이미지·영상·문서 변환, 감시 폴더 자동 정리, 모든 실행 되돌리기" },
+    ],
+    stack: ["Tauri 2", "React", "Rust", "TypeScript"],
+    productUrl: "/lab/sokssok/",
   },
 ];
 
@@ -308,7 +377,7 @@ export const contentChannels: Channel[] = [
     aiScope: "영상 생성 AI 활용 · 음성은 보이스 체인저",
     role: "기획 · AI 영상 생성 · 편집 · 채널 운영",
     description:
-      "생성형 AI 영상 도구가 막 등장했던 초기에, 일본어권을 타깃으로 직접 기획한 동물 캐릭터 숏폼 콘텐츠입니다. 캐릭터 설정과 대사 기획부터 AI 영상 생성, 편집, 업로드까지 전 과정을 혼자 운영했습니다.",
+      "생성형 AI 영상 도구가 나온 초기에 시작한 일본어 동물 캐릭터 채널입니다. 캐릭터 설정, 대사, AI 영상 생성, 편집, 업로드를 혼자 했습니다.",
     stat: "롱폼 2개 · 숏폼 4개(롱폼 발췌)",
     mediaLayout: "chips",
     videos: [
@@ -343,7 +412,7 @@ export const contentChannels: Channel[] = [
     aiScope: "음성·영상 전체 AI 생성",
     role: "기획 · 대본 · AI 이미지 생성 · 편집 · 채널 운영",
     description:
-      "생활 정보와 시사 이슈를 짧게 정리해 훑어보는 한국형 숏폼 콘텐츠입니다. 대본 작성부터 AI 이미지 생성, 편집, 업로드까지 동일한 포맷으로 반복하며 양산형 숏폼 제작 파이프라인을 실험했습니다.",
+      "생활 정보와 시사 이슈를 짧게 정리하는 숏폼 채널입니다. 같은 포맷으로 대본, AI 이미지, 편집, 업로드를 반복하며 숏폼을 빠르게 만드는 방식을 시험했습니다.",
     stat: "숏폼 56개",
     mediaLayout: "chips",
     videos: [
@@ -379,7 +448,7 @@ export const compositionChannel: Channel = {
     aiScope: "작곡·편곡·연주는 직접, 커버 아트만 AI 생성",
     role: "작곡 · 연주 · 커버 아트 디렉션",
     description:
-      "피아노 기반 자작곡을 작곡·연주하며 화성과 다이내믹을 다루는 감각을 쌓고 있습니다. 이 감각은 보이스·효과음·배경음악의 균형을 판단하는 데 그대로 이어집니다.",
+      "피아노 자작곡을 작곡하고 연주해 올리는 채널입니다.",
     stat: "자작곡 45곡",
     mediaLayout: "marquee",
     albums: [

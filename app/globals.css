@@ -39,3 +39,6 @@ section[id] { scroll-margin-top: 88px; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* Product pages are light; keep overscroll and page edges matching them. */
+html:has([data-light-page]), body:has([data-light-page]) { background: #f6f8fb; }

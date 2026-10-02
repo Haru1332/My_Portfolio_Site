@@ -212,6 +212,14 @@
 .caseStudyRole { color: #b2b7b4; font-size: 11px; letter-spacing: .04em; }
 .caseStudyNoteTag { margin-top: 10px; padding: 5px 10px; width: fit-content; border: 1px solid color-mix(in srgb, var(--accent-ai) 45%, var(--line-strong)); color: var(--accent-ai); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
 .caseStudySummary { margin: 10px 0 0; color: #9aa09e; font-size: 12.5px; line-height: 1.85; text-wrap: pretty; }
+.caseStudyFeatures { margin: 16px 0 0; padding: 14px 0 0; list-style: none; display: grid; gap: 9px; border-top: 1px solid var(--line); }
+.caseStudyFeatures li { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 12px; font-size: 12px; line-height: 1.7; }
+.caseStudyFeatures strong { color: var(--ivory); font-weight: 500; letter-spacing: -.01em; }
+.caseStudyFeatures span { color: #9aa09e; text-wrap: pretty; }
+.caseStudyStack { margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.caseStudyStack li { padding: 4px 9px; border: 1px solid var(--line); color: #b2b7b4; font-size: 10px; letter-spacing: .04em; }
+.caseStudyProductLink { margin-top: 20px; width: fit-content; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border: 1px solid color-mix(in srgb, var(--accent-ai) 55%, var(--line-strong)); color: var(--ivory); font-size: 12px; letter-spacing: .04em; transition: color 220ms ease, background 220ms ease, border-color 220ms ease; }
+.caseStudyProductLink:hover, .caseStudyProductLink:focus-visible { color: var(--black); background: var(--ivory); border-color: var(--ivory); }
 .caseStudyTools { margin-top: 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
 .caseStudyToolChip { min-width: 0; padding: 10px 12px; border: 1px solid var(--line); background: rgba(255,255,255,.015); }
 .caseStudyToolHead { margin: 0; display: flex; align-items: center; gap: 8px; }
@@ -414,6 +422,7 @@
 
   .caseStudyGrid { grid-template-columns: 1fr; }
   .caseStudyTools { grid-template-columns: 1fr; }
+  .caseStudyFeatures li { grid-template-columns: 1fr; gap: 1px; }
 
   .channelsSection { padding: 76px 20px 100px; }
   .channelGrid { grid-template-columns: 1fr; }

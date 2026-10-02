@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import type { Project } from "@/content/portfolio";
 import { assetPath } from "@/lib/asset-path";
+import { track } from "@/lib/analytics";
 import { getYouTubeEmbedUrl, getYouTubeThumbnailUrl } from "@/lib/youtube";
 import { TrackBadge } from "@/components/TrackBadge";
 import styles from "@/app/page.module.css";
@@ -16,9 +17,10 @@ type AiWorksSectionProps = {
   subtitle?: string;
   countLabel: React.ReactNode;
   projects: Project[];
+  link?: { href: string; label: string };
 };
 
-export function AiWorksSection({ id, index, kicker, heading, subtitle, countLabel, projects }: AiWorksSectionProps) {
+export function AiWorksSection({ id, index, kicker, heading, subtitle, countLabel, projects, link }: AiWorksSectionProps) {
   return (
     <section className={styles.workSection} id={id} data-track="ai" aria-labelledby={`${id}-title`}>
       <header className={styles.sectionHeader}>
@@ -26,6 +28,11 @@ export function AiWorksSection({ id, index, kicker, heading, subtitle, countLabe
           <p className={styles.kicker}><span>{index}</span> {kicker}</p>
           <h2 id={`${id}-title`}>{heading}</h2>
           {subtitle && <p className={styles.caseStudySectionNote}>{subtitle}</p>}
+          {link && (
+            <a href={assetPath(link.href)} className={styles.caseStudyProductLink}>
+              {link.label} <span aria-hidden="true">→</span>
+            </a>
+          )}
         </div>
         <div className={styles.count}><strong>{String(projects.length).padStart(2, "0")}</strong><span>{countLabel}</span></div>
       </header>
@@ -64,7 +71,7 @@ function CaseStudyCard({ project }: { project: Project }) {
             <button
               type="button"
               className={styles.caseStudyPlayThumb}
-              onClick={() => setIsPlaying(true)}
+              onClick={() => { setIsPlaying(true); track("video_play", { title: project.shortTitle }); }}
               aria-label={`${project.title} 영상 재생`}
             >
               {videoThumb && <Image src={videoThumb} alt="" fill unoptimized sizes="(max-width: 1024px) 100vw, 45vw" />}
@@ -126,6 +133,23 @@ function CaseStudyCard({ project }: { project: Project }) {
         {project.tracks.length > 1 && <TrackBadge tracks={project.tracks} />}
         {project.noteTag && <span className={styles.caseStudyNoteTag}>{project.noteTag}</span>}
         {project.summary && <p className={styles.caseStudySummary}>{project.summary}</p>}
+        {project.features && (
+          <ul className={styles.caseStudyFeatures}>
+            {project.features.map((feature) => (
+              <li key={feature.name}><strong>{feature.name}</strong><span>{feature.description}</span></li>
+            ))}
+          </ul>
+        )}
+        {project.stack && (
+          <ul className={styles.caseStudyStack} aria-label="사용 기술">
+            {project.stack.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        )}
+        {project.productUrl && (
+          <a href={assetPath(project.productUrl)} className={styles.caseStudyProductLink}>
+            제품 페이지 보기 <span aria-hidden="true">→</span>
+          </a>
+        )}
         {project.tools && (
           <div className={styles.caseStudyTools}>
             {project.tools.map((tool) => (
