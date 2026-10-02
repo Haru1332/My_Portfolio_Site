@@ -13,23 +13,17 @@ function trackAccentVar(track: Track) {
 export function CareerSection() {
   const [selectedId, setSelectedId] = useState(careers[0].id);
   const selected = careers.find((career) => career.id === selectedId) ?? careers[0];
-  const accentStyle =
-    selected.tracks.length > 1
-      ? { "--career-accent": "var(--accent-sound)", "--career-accent-2": "var(--accent-ai)" }
-      : { "--career-accent": trackAccentVar(selected.tracks[0]), "--career-accent-2": trackAccentVar(selected.tracks[0]) };
+  const accentStyle = {
+    "--career-accent": trackAccentVar(selected.tracks[0]),
+    "--career-accent-2": trackAccentVar(selected.tracks[selected.tracks.length - 1]),
+  } as React.CSSProperties;
 
   return (
     <section className={styles.careerSection} id="career" aria-labelledby={`career-title-${selected.id}`}>
-      <div className={styles.careerStage} data-career={selected.id} style={accentStyle as React.CSSProperties}>
-        <div className={styles.careerVisual} aria-hidden="true">
-          <span className={styles.careerVisualMark}>{selected.tabLabel}</span>
-          <span className={styles.careerVisualSpectrum}>
-            {Array.from({ length: 20 }, (_, i) => <i key={i} style={{ "--h": (0.2 + 0.8 * Math.abs(Math.sin(i * 0.6))).toFixed(2) } as React.CSSProperties} />)}
-          </span>
-          <span className={styles.careerVisualEdge} />
-        </div>
+      <div className={styles.careerStage} data-career={selected.id} style={accentStyle}>
         <div className={styles.careerCopy}>
           <p className={styles.kicker}><span>02</span> Career</p>
+          {/* All companies share one grid cell, so the tallest sets the height and switching tabs never jumps. */}
           <div className={styles.careerPanels} aria-live="polite">
             {careers.map((career) => {
               const isSelected = career.id === selected.id;
@@ -40,15 +34,21 @@ export function CareerSection() {
                   className={`${styles.careerContent} ${isSelected ? styles.careerContentActive : ""}`}
                   aria-hidden={!isSelected}
                 >
-                  <div className={styles.trackBadge}>
-                    {career.tracks.map((track) => (
-                      <span key={track} data-track={track}><i />{trackLabel[track]}</span>
-                    ))}
+                  <div className={styles.careerHead}>
+                    <div>
+                      <p className={styles.careerPeriod}>{career.period}</p>
+                      <h2 id={`career-title-${career.id}`}>{career.company}</h2>
+                      <p className={styles.careerRole}>{career.role}</p>
+                    </div>
+                    <div className={styles.careerHeadSide}>
+                      <div className={styles.trackBadge}>
+                        {career.tracks.map((track) => (
+                          <span key={track} data-track={track}><i />{trackLabel[track]}</span>
+                        ))}
+                      </div>
+                      <p className={styles.careerDescription}>{career.description}</p>
+                    </div>
                   </div>
-                  <p className={styles.careerPeriod}>{career.period}</p>
-                  <h2 id={`career-title-${career.id}`}>{career.company}</h2>
-                  <p className={styles.careerRole}>{career.role}</p>
-                  <p className={styles.careerDescription}>{career.description}</p>
                   <div className={styles.careerHighlightGroups}>
                     {career.highlightGroups.map((group) => (
                       <div key={group.label} className={styles.careerGroup} data-track={group.track}>

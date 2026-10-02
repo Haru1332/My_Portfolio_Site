@@ -59,28 +59,40 @@ export const careers: Career[] = [
     company: "인플루엔셜 · 윌라",
     role: "오디오 엔지니어 · AX 프로젝트 리더",
     tracks: ["sound", "ai"],
-    description:
-      "오디오북·오디오드라마의 녹음 디렉팅, 보이스 편집, 후반 검수를 맡았고, 반복되는 제작 작업을 AI 도구로 자동화했습니다.",
+    description: "오디오북·오디오드라마 녹음 연출 및 후반 제작, 제작 공정 자동화(AX) 담당",
     highlightGroups: [
       {
         track: "sound",
         label: "Recording & Direction",
         items: [
-          "오디오북·오디오드라마 성우 캐스팅 검토부터 녹음 연출, 편집, 후반 검수까지 작품 단위 제작을 총괄했습니다.",
-          "장면과 캐릭터에 맞춰 성우의 톤, 호흡, 속도를 디렉팅했습니다.",
-          "오디오드라마의 보이스, 효과음, 배경음악 밸런스를 잡았습니다.",
+          "오디오북, 비문학 콘텐츠, 웹소설 기반 오디오드라마의 녹음 및 후반 제작",
+          "성우 캐스팅 검토, 녹음 연출, 테이크 관리, 보이스 편집, 후반 검수까지 작품 단위 제작 담당",
+          "장르·캐릭터·장면 감정선에 맞춘 성우 톤, 호흡, 속도, 리듬 디렉팅",
+          "협회·비협회 성우 녹음 세션 진행, 성우별 연기 방향 및 작품별 보이스 톤 정리",
+          "Reaper 기반 보이스 편집, 효과음·배경음악 밸런스 조정, 믹싱",
+        ],
+      },
+      {
+        track: "sound",
+        label: "Session & Production Management",
+        items: [
+          "작품별 녹음 일정, 성우 스케줄, 편집 공정 진행 상황 관리",
+          "재녹음·수정 요청 시 제작 담당자와 편집 공정 간 커뮤니케이션 조율",
+          "녹음·편집·검수 흐름이 끊기지 않도록 작품 단위 진행 관리(사운드 PM 역할)",
         ],
       },
       {
         track: "ai",
         label: "AX Pipeline",
         items: [
-          "Reaper 스크립트와 로컬 ASR·LLM으로 검수, 컷 편집, 자료 정리를 자동화했습니다.",
-          "AI 코딩 에이전트로 제작에 쓰는 업무 도구를 직접 개발했습니다.",
+          "검수, 컷 편집, 파일 정리, 자료 탐색 등 반복 공정 분석 및 개선 워크플로우 설계",
+          "Reaper 스크립트(Lua·Python)로 녹음 세션 준비 및 편집 공정 자동화",
+          "로컬 ASR·LLM 연계 음성 검수, 컷 편집, 대본·자료 정리 보조 도구 개발",
+          "Claude Code, Codex 등 AI 코딩 에이전트로 제작용 업무 도구 기획 및 구현",
         ],
       },
     ],
-    tags: ["Voice Direction", "Mix · QC", "AX Automation"],
+    tags: ["Voice Direction", "Mix · QC", "Sound PM", "AX Automation"],
   },
   {
     id: "netmarble",
@@ -89,18 +101,43 @@ export const careers: Career[] = [
     period: "2021.10 — 2026.02",
     company: "넷마블 컴퍼니",
     role: "AI 오디오 엔지니어",
-    tracks: ["ai"],
-    description:
-      "게임 개발용 음성 AI 파이프라인을 만들고, 생성형 음성 모델(TTS·VC·Singing Voice)의 품질을 평가해 연구팀에 개선점을 전달했습니다.",
+    tracks: ["ai", "sound"],
+    description: "게임 개발용 음성 AI 도입 지원, 생성형 음성 모델 품질 분석, 음성 AI 서비스 기획 담당",
     highlightGroups: [
       {
         track: "ai",
-        label: "AI R&D & Production",
+        label: "AI Solution & Tech Bridge",
         items: [
-          "기획팀, 사업부, 계열사 사운드팀과 함께 게임별 음성 AI 도입안을 만들고 적용했습니다.",
-          "모델 출력의 기계음, 아티팩트, 발음 불안정, 톤 흔들림을 청취와 스펙트로그램으로 찾아 연구팀에 피드백했습니다.",
-          "음색, 피치, 속도, 감정 파라미터를 조정해 AI 성우와 가상 캐릭터의 목소리 설정을 잡았습니다.",
-          "음성 AI 서비스 화면을 Figma로 설계하고, Flutter 개발팀과 구현 방식을 맞췄습니다.",
+          "기획팀, 사업부, 계열사 사운드팀과 협업해 장르별(RPG, 캐주얼 등) 음성 AI 도입 방안 제안 및 구축 지원",
+          "기획 초기 단계용 AI 가이드 보이스 지원, 성우 녹음 전 캐릭터 톤·연출 검토 환경 마련",
+          "R&D 기술의 게임 개발 적용을 위한 가이드 및 기술 문서 작성, 비개발 직군 대상 사용 기준 정리",
+        ],
+      },
+      {
+        track: "ai",
+        label: "Model QC & R&D Feedback",
+        items: [
+          "TTS, VC, Singing Voice 모델 결과물의 청감·스펙트로그램 기반 품질 분석",
+          "기계음, 아티팩트, 발음 불안정, 위상 왜곡, 톤 일관성 저하 등 문제 유형화 및 연구진 피드백",
+          "상용화 기준 사운드 품질(QC) 기준 수립",
+          "학습용 음성 데이터 선별, 품질 검수, 라벨링",
+        ],
+      },
+      {
+        track: "sound",
+        label: "Voice Design & Directing",
+        items: [
+          "음색, 피치, 속도, 감정 파라미터 튜닝으로 AI 성우·게임 캐릭터 보이스 페르소나 설계",
+          "가상 아이돌 및 게임 캐릭터 성우 녹음 디렉팅, 테이크 선별, 편집 및 후반 작업",
+        ],
+      },
+      {
+        track: "ai",
+        label: "Service Planning & UI/UX",
+        items: [
+          "사내 음성 AI 웹 서비스·애플리케이션 기획, 사용자 시나리오 및 기능 요구사항 설계",
+          "Figma로 UI/UX 및 와이어프레임 설계, 개발팀과 구현 방향 협의",
+          "Flutter 기반 프론트엔드 개발 참여",
         ],
       },
     ],
@@ -114,16 +151,30 @@ export const careers: Career[] = [
     company: "트라움에스앤씨",
     role: "오디오 엔지니어",
     tracks: ["sound"],
-    description:
-      "클래식 공연, 기업 행사, 웨딩 현장의 FOH 믹싱과 음향 시스템 운영을 맡았습니다.",
+    description: "라움아트센터 공연·예식·컨벤션 음향, 조명, 영상 운영 담당",
     highlightGroups: [
       {
         track: "sound",
-        label: "Live Sound Operating",
+        label: "Live Sound",
         items: [
-          "라움아트센터에서 클래식·재즈 공연과 대규모 예식의 FOH 믹싱, 음향 시스템 세팅을 맡았습니다.",
-          "홀 특성에 맞춰 스피커를 튜닝하고 시그널 플로우를 점검했습니다.",
-          "외부 기술팀과 협업을 조율하는 기술 PM 역할도 맡았습니다.",
+          "클래식·재즈 공연, 기업 행사, 대규모 예식 FOH 믹싱 및 운영",
+          "홀 특성에 맞춘 스피커 튜닝, 음향 장비 유지보수, 시그널 플로우 점검",
+        ],
+      },
+      {
+        track: "sound",
+        label: "Lighting & Video",
+        items: [
+          "행사 연출에 맞춘 조명 프로그래밍 및 영상 송출 운영",
+          "장비 오류·신호 끊김 등 현장 트러블슈팅",
+        ],
+      },
+      {
+        track: "sound",
+        label: "Technical PM",
+        items: [
+          "외부 음향팀 투입 시 센터 시스템과의 연동 검토 및 시그널 플로우 관리",
+          "클라이언트·외부 대행사 사전 기술 미팅, 장비·인력 운용 계획 조율",
         ],
       },
     ],
