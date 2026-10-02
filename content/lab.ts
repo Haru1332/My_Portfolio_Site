@@ -9,7 +9,7 @@ export function betaMail(subject: string) {
 export const contactMail = betaMail("[Haru Lab] 문의");
 
 export type LabProduct = {
-  id: "creator-assistant" | "sokssok";
+  id: "ieum" | "sokssok";
   name: string;
   href: string;
   platform: string;
@@ -26,18 +26,18 @@ export type LabProduct = {
 
 export const labProducts: LabProduct[] = [
   {
-    id: "creator-assistant",
-    name: "크리에이터 도우미",
-    href: "/lab/creator-assistant/",
+    id: "ieum",
+    name: "이음",
+    href: "/lab/ieum/",
     platform: "웹앱 · 베타",
-    tagline: "혼자 하는 크리에이터의 제작팀",
-    description: "주제 추천부터 자료 조사, 대본, 댓글 답글까지. 유튜브 제작 과정을 한곳에서 관리하세요.",
-    points: ["채널 맞춤 주제 추천", "출처 자동 대조", "YouTube·Instagram 댓글 관리"],
+    tagline: "내 노트에서 시작하는 콘텐츠 제작",
+    description: "옵시디언 노트와 외부 자료를 근거로 주제를 고르고, 대본을 쓰고, 댓글에 답하세요.",
+    points: ["내 노트 기반 주제 추천", "외부 자료 원문 대조", "YouTube·Instagram 댓글 관리"],
     image: "/assets/products/creator/tour-poster.jpg",
     imageSize: [1280, 800],
-    imageAlt: "크리에이터 도우미 제작 보드 화면",
+    imageAlt: "이음 제작 보드 화면",
     detailImage: "/assets/products/creator/research-poster.jpg",
-    mail: betaMail("[크리에이터 도우미] 베타 신청"),
+    mail: betaMail("[이음] 베타 신청"),
   },
   {
     id: "sokssok",

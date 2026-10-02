@@ -41,7 +41,7 @@ export type Project = {
   features?: AppFeature[];
   /** Tech stack, shown as small tags. */
   stack?: string[];
-  /** Internal path to a product page, e.g. "/lab/creator-assistant/". */
+  /** Internal path to a product page, e.g. "/lab/ieum/". */
   productUrl?: string;
 };
 
@@ -242,10 +242,10 @@ export const aiProjects: Project[] = [
 
 export const appProjects: Project[] = [
   {
-    id: "creator-assistant",
+    id: "ieum",
     order: "01",
-    title: "크리에이터 도우미 — 1인 크리에이터 콘텐츠 제작 앱",
-    shortTitle: "크리에이터 도우미",
+    title: "이음 — 내 지식 기반 콘텐츠 제작 앱",
+    shortTitle: "이음",
     category: "Web App · AI Content Workflow",
     role: "Planning · Design · Development",
     tracks: ["ai"],
@@ -260,14 +260,14 @@ export const appProjects: Project[] = [
     galleryLabels: ["주제 찾기", "리서치 · 출처 대조", "유튜브 대본", "발행 전 점검", "댓글 답글 검토"],
     noteTag: "개인 프로젝트 · 개발 중",
     summary:
-      "유튜브 채널을 운영하면서 혼자 하기 버거웠던 주제 찾기, 자료 조사, 대본, 댓글 답글을 하나로 묶은 웹앱입니다. AI가 가져온 인용문은 출처 원문과 대조하고, 게시 전에는 사람이 확인하도록 했습니다.",
+      "옵시디언에 쌓아 온 내 노트와 외부 자료를 근거로 주제 찾기, 자료 조사, 대본, 댓글 답글을 하나로 묶은 웹앱입니다. 유튜브 채널을 혼자 운영하며 버거웠던 일을 덜려고 만들었습니다. AI가 가져온 인용문은 출처 원문과 대조하고, 게시 전에는 사람이 확인하도록 했습니다.",
     features: [
       { name: "주제 → 리서치 → 대본", description: "주제 추천, 인용문 원문 대조, 대본·블로그·쇼츠 초안 작성" },
       { name: "지식 그래프 · 앱 비서", description: "옵시디언 노트 그래프, 노트를 참고해 답하는 AI 비서" },
       { name: "댓글 답글", description: "YouTube·Instagram 댓글 답글 초안, 승인 후 공식 API로 게시" },
     ],
     stack: ["Next.js", "TypeScript", "SQLite", "Claude Code · Codex 엔진"],
-    productUrl: "/lab/creator-assistant/",
+    productUrl: "/lab/ieum/",
   },
   {
     id: "sokssok",

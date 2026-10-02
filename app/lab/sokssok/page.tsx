@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Gowun_Dodum, Jua } from "next/font/google";
+import localFont from "next/font/local";
 import { AutoVideo } from "@/components/products/AutoVideo";
+import { SokDemo } from "@/components/products/SokDemo";
 import { FeatureTabs, type FeatureTab } from "@/components/products/FeatureTabs";
 import { labProducts } from "@/content/lab";
 import { assetPath } from "@/lib/asset-path";
 import styles from "@/components/products/product.module.css";
 
-const jua = Jua({ subsets: ["latin"], weight: "400", variable: "--font-jua", display: "swap" });
-const gowun = Gowun_Dodum({ subsets: ["latin"], weight: "400", variable: "--font-gowun", display: "swap" });
+// The app's own fonts, cut down to everyday Hangul + Latin so each loads as one preloaded file.
+const jua = localFont({ src: "../fonts/Jua-Regular.subset.woff2", variable: "--font-jua", display: "swap" });
+const gowun = localFont({ src: "../fonts/GowunDodum-Regular.subset.woff2", variable: "--font-gowun", display: "swap" });
 
 export const metadata: Metadata = {
   title: "쏙쏙 — 흩어진 파일을 제자리에 | Haru Lab",
@@ -19,10 +21,10 @@ const media = (name: string) => `/assets/products/sokssok/${name}`;
 const betaMail = labProducts.find((product) => product.id === "sokssok")!.mail;
 
 const tabs: FeatureTab[] = [
-  { id: "scan", label: "폴더 고르기", title: "폴더 고르기", description: "폴더 안의 사진·영상·문서를 바로 파악합니다", video: media("home.mp4"), poster: media("home-poster.jpg") },
-  { id: "rename", label: "이름 정리", title: "이름 정리", description: "‘KakaoTalk_’, ‘(1)’ 같은 군더더기를 한 번에 지웁니다", video: media("rename.mp4"), poster: media("rename-poster.jpg") },
-  { id: "sort", label: "폴더로 분류", title: "폴더로 분류", description: "종류·연도·월 기준으로 폴더를 나눕니다", video: media("sort.mp4"), poster: media("sort-poster.jpg") },
-  { id: "dupes", label: "중복 · 버전", title: "중복 · 버전", description: "중복 파일과 여러 버전 파일을 하나로 정리합니다", video: media("ver.mp4"), poster: media("ver-poster.jpg") },
+  { id: "scan", label: "폴더 고르기", description: "폴더 안의 사진·영상·문서를 바로 파악합니다", video: media("home.mp4"), poster: media("home-poster.jpg") },
+  { id: "rename", label: "이름 정리", description: "‘KakaoTalk_’, ‘(1)’ 같은 군더더기를 한 번에 지웁니다", video: media("rename.mp4"), poster: media("rename-poster.jpg") },
+  { id: "sort", label: "폴더로 분류", description: "종류·연도·월 기준으로 폴더를 나눕니다", video: media("sort.mp4"), poster: media("sort-poster.jpg") },
+  { id: "dupes", label: "중복 · 버전", description: "중복 파일과 여러 버전 파일을 하나로 정리합니다", video: media("ver.mp4"), poster: media("ver-poster.jpg") },
 ];
 
 const trust = ["실행 전 미리보기", "언제든 되돌리기", "오프라인 동작", "간편 설치"];
@@ -40,6 +42,7 @@ export default function SokssokPage() {
       <div className={styles.subnav}>
         <a href="#top" className={styles.subnavName}><Image src={assetPath(media("icon.svg"))} alt="" width={22} height={22} className={styles.productIcon} />쏙쏙</a>
         <nav aria-label="쏙쏙 메뉴">
+          <a href="#demo">체험</a>
           <a href="#how">작동 방식</a>
           <a href="#features">기능</a>
           <a href="#principles">안전</a>
@@ -70,6 +73,12 @@ export default function SokssokPage() {
         <ul className={styles.trust} aria-label="핵심 특징">
           {trust.map((item) => <li key={item}>{item}</li>)}
         </ul>
+
+        <section className={styles.section} id="demo" aria-labelledby="demo-title">
+          <p className={styles.eyebrow}>직접 해 보기</p>
+          <h2 id="demo-title">버튼을 눌러 정리해 보세요</h2>
+          <SokDemo />
+        </section>
 
         <section className={styles.section} id="how" aria-labelledby="how-title">
           <p className={styles.eyebrow}>작동 방식</p>

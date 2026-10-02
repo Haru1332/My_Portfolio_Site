@@ -7,7 +7,6 @@ import styles from "@/components/products/product.module.css";
 export type FeatureTab = {
   id: string;
   label: string;
-  title: string;
   description: string;
   video: string;
   poster: string;
@@ -40,7 +39,7 @@ export function FeatureTabs({ tabs }: { tabs: FeatureTab[] }) {
       <div className={styles.tabPanel} role="tabpanel" id={`panel-${active.id}`} aria-labelledby={`tab-${active.id}`}>
         <div className={styles.frame}>
           <div className={styles.frameBar} aria-hidden="true"><i /><i /><i /></div>
-          <AutoVideo src={active.video} poster={active.poster} label={`${active.title} 화면 녹화`} className={styles.media} />
+          <AutoVideo src={active.video} poster={active.poster} label={`${active.label} 화면 녹화`} className={styles.media} />
         </div>
       </div>
     </div>

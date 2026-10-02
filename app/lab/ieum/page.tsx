@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { AutoVideo } from "@/components/products/AutoVideo";
+import { GraphDemo } from "@/components/products/GraphDemo";
 import { FeatureTabs, type FeatureTab } from "@/components/products/FeatureTabs";
 import { labProducts } from "@/content/lab";
 import { assetPath } from "@/lib/asset-path";
 import styles from "@/components/products/product.module.css";
 
 export const metadata: Metadata = {
-  title: "크리에이터 도우미 — 혼자 하는 크리에이터의 제작팀 | Haru Lab",
-  description: "주제 추천, 자료 조사, 대본, YouTube·Instagram 댓글 관리까지. 1인 크리에이터를 위한 제작 도구.",
+  title: "이음 — 내 노트에서 시작하는 콘텐츠 제작 | Haru Lab",
+  description: "옵시디언 노트와 외부 자료를 근거로 주제 추천, 대본 작성, YouTube·Instagram 댓글 관리까지."
 };
 
 const media = (name: string) => `/assets/products/creator/${name}`;
-const betaMail = labProducts.find((product) => product.id === "creator-assistant")!.mail;
+const betaMail = labProducts.find((product) => product.id === "ieum")!.mail;
 
 const tabs: FeatureTab[] = [
-  { id: "topics", label: "주제 찾기", title: "주제 찾기", description: "내 채널에 맞는 주제를 추천받으세요", video: media("topics.mp4"), poster: media("topics-poster.jpg") },
-  { id: "research", label: "리서치", title: "리서치", description: "인용문이 원문과 맞는지 자동으로 확인합니다", video: media("research.mp4"), poster: media("research-poster.jpg") },
-  { id: "script", label: "대본", title: "대본", description: "구간별 대사와 화면 구성까지 대본 초안을 만듭니다", video: media("script.mp4"), poster: media("script-poster.jpg") },
-  { id: "comments", label: "댓글 답글", title: "댓글 답글", description: "댓글마다 내 말투로 답글 초안을 준비합니다", video: media("comments.mp4"), poster: media("comments-poster.jpg") },
+  { id: "topics", label: "주제 찾기", description: "내 채널에 맞는 주제를 추천받으세요", video: media("topics.mp4"), poster: media("topics-poster.jpg") },
+  { id: "research", label: "리서치", description: "인용문이 원문과 맞는지 자동으로 확인합니다", video: media("research.mp4"), poster: media("research-poster.jpg") },
+  { id: "script", label: "대본", description: "구간별 대사와 화면 구성까지 대본 초안을 만듭니다", video: media("script.mp4"), poster: media("script-poster.jpg") },
+  { id: "comments", label: "댓글 답글", description: "댓글마다 내 말투로 답글 초안을 준비합니다", video: media("comments.mp4"), poster: media("comments-poster.jpg") },
 ];
 
 const trust = ["YouTube · Instagram 연동", "출처 자동 대조", "승인 후 게시", "추가 요금 없음"];
@@ -30,12 +31,13 @@ const principles = [
   { icon: "M4 7h16v10H4zM4 11h16M8 15h3", title: "추가 요금 없음", text: "사용 중인 Claude·ChatGPT 구독으로 동작합니다." },
 ];
 
-export default function CreatorAssistantPage() {
+export default function IeumPage() {
   return (
     <div className={styles.page} id="top">
       <div className={styles.subnav}>
-        <a href="#top" className={styles.subnavName}><span className={styles.subnavDot} aria-hidden="true" />크리에이터 도우미</a>
-        <nav aria-label="크리에이터 도우미 메뉴">
+        <a href="#top" className={styles.subnavName}><span className={styles.subnavDot} aria-hidden="true" />이음</a>
+        <nav aria-label="이음 메뉴">
+          <a href="#demo">체험</a>
           <a href="#how">작동 방식</a>
           <a href="#assistant">앱 비서</a>
           <a href="#features">기능</a>
@@ -47,9 +49,9 @@ export default function CreatorAssistantPage() {
       <main>
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <p className={styles.badge}><span /> 크리에이터 도우미 · 베타</p>
-            <h1>혼자 하는 크리에이터의<br /><em>제작팀</em></h1>
-            <p className={styles.lead}>주제 선정부터 대본, 댓글 관리까지 한곳에서 끝내세요.</p>
+            <p className={styles.badge}><span /> 이음 · 베타</p>
+            <h1>내 노트에서 시작하는<br /><em>콘텐츠 제작</em></h1>
+            <p className={styles.lead}>옵시디언 노트와 외부 자료를 근거로 주제를 고르고, 대본을 쓰고, 댓글에 답하세요.</p>
             <div className={styles.ctas}>
               <a href={betaMail} className={styles.primary}>베타 신청하기</a>
               <a href="#how" className={styles.ghost}>작동 방식 보기 →</a>
@@ -64,6 +66,12 @@ export default function CreatorAssistantPage() {
         <ul className={styles.trust} aria-label="핵심 특징">
           {trust.map((item) => <li key={item}>{item}</li>)}
         </ul>
+
+        <section className={styles.section} id="demo" aria-labelledby="demo-title">
+          <p className={styles.eyebrow}>미리 보기</p>
+          <h2 id="demo-title">주제를 고르면 내 노트에서 근거를 찾습니다</h2>
+          <GraphDemo />
+        </section>
 
         <section className={styles.section} id="how" aria-labelledby="how-title">
           <p className={styles.eyebrow}>작동 방식</p>

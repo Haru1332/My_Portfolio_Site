@@ -5,8 +5,8 @@ import { assetPath } from "@/lib/asset-path";
 import styles from "@/components/lab/lab.module.css";
 
 export const metadata: Metadata = {
-  title: "Haru Lab | 크리에이터 도우미 · 쏙쏙",
-  description: "유튜브 제작 도구 크리에이터 도우미와 Windows 파일 정리 프로그램 쏙쏙. 지금 베타로 사용해 보세요.",
+  title: "Haru Lab | 이음 · 쏙쏙",
+  description: "내 노트로 콘텐츠를 만드는 이음과 Windows 파일 정리 프로그램 쏙쏙. 지금 베타로 사용해 보세요.",
 };
 
 export default function LabHomePage() {

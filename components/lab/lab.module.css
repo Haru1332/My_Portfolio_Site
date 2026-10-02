@@ -14,7 +14,7 @@
   min-height: 100vh;
   color: var(--p-fg);
   background: var(--p-bg);
-  font-family: var(--font-sans);
+  font-family: var(--font-lab), var(--font-sans);
   line-height: 1.6;
 }
 .shell :focus-visible { outline-color: var(--p-accent); }
@@ -73,7 +73,7 @@
 .showcaseItem .frame { width: 100%; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 .showcaseLabel { order: -1; padding: 6px 14px; border-radius: 999px; color: var(--p-fg); background: var(--p-surface); border: 1px solid var(--p-line); font-size: 14px; font-weight: 600; }
 .showcaseItem[data-product="sokssok"] .showcaseLabel { color: #c43d72; }
-.showcaseItem[data-product="creator-assistant"] .showcaseLabel { color: var(--p-accent); }
+.showcaseItem[data-product="ieum"] .showcaseLabel { color: var(--p-accent); }
 
 .frame { overflow: hidden; border: 1px solid var(--p-line); border-radius: 16px; background: var(--p-surface); box-shadow: var(--p-shadow); }
 .frameBar { height: 30px; display: flex; align-items: center; gap: 6px; padding: 0 14px; border-bottom: 1px solid var(--p-line); background: #f1f4f8; }
@@ -137,3 +137,11 @@
 /* Even line lengths for headings, no orphan words in body text */
 .shell h1, .shell h2, .shell h3 { text-wrap: balance; }
 .shell p, .shell li { text-wrap: pretty; }
+
+
+/* Page-wide pointer light: sits behind everything, so it only tints the page background and cards/screens cover it */
+.cursorLight { --c: 47, 124, 246; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 500ms ease; background: radial-gradient(520px circle at var(--x, 50%) var(--y, 50%), rgba(var(--c), 0.07), rgba(var(--c), 0.025) 40%, transparent 70%); }
+.cursorLight[data-tone="pink"] { --c: 240, 90, 140; }
+.cursorLight[data-on="true"] { opacity: 1; }
+.shell > main, .shell > div:not(.cursorLight), .shell > footer { position: relative; z-index: 1; }
+.shell:has(:global([data-tone="pink"])) { background: #fff6f4; }
