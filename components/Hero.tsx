@@ -83,8 +83,8 @@ export function Hero() {
         </div>
         <div className={styles.heroCopy}>
           <p className={styles.kicker}><span>01</span> Profile</p>
-          <h1 id="hero-title"><span>Sound</span><span>× AI</span></h1>
-          <p>게임·오디오드라마 사운드를 만들고, 그 제작 과정을 AI로 자동화합니다.</p>
+          <h1 id="hero-title"><span>AI</span><span>× Sound</span></h1>
+          <p>업무를 이해하고, AI로 일하는 방식을 바꿉니다.</p>
         </div>
         <div className={styles.heroCredit}>
           <span>{profile.roleLine}</span><strong>{profile.nameKo}</strong><small>{profile.nameEn}</small>

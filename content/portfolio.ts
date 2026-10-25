@@ -7,7 +7,7 @@ export type HighlightGroup = {
 };
 
 export type Career = {
-  id: "willa" | "netmarble" | "traum";
+  id: "goodmona" | "willa" | "netmarble" | "robot" | "traum";
   tabLabel: string;
   tabPeriod: string;
   period: string;
@@ -43,6 +43,8 @@ export type Project = {
   stack?: string[];
   /** Internal path to a product page, e.g. "/lab/ieum/". */
   productUrl?: string;
+  /** External link to a hands-on demo, opened in a new tab. */
+  demoUrl?: string;
 };
 
 export type AppFeature = {
@@ -52,14 +54,54 @@ export type AppFeature = {
 
 export const careers: Career[] = [
   {
+    id: "goodmona",
+    tabLabel: "GOODMONA",
+    tabPeriod: "2026—",
+    period: "2026.10 — 재직 중",
+    company: "굿모나의원",
+    role: "AX 및 AI 자동화 담당 (1인)",
+    tracks: ["ai"],
+    description: "직접 만든 병원 업무 통합 시스템 도입·확장, 콘텐츠 기획용 AI 에이전트 팀, 직원 인트라넷 개발",
+    highlightGroups: [
+      {
+        track: "ai",
+        label: "Hospital AX System",
+        items: [
+          "입사 2주 만에 실무 도입, 직원 약 20명이 매일 사용",
+          "진료 사진을 환자·방문일별로 자동 분류하고 시술 전후를 비교하는 화면 개발, 하루 수백 장 처리",
+          "상담 녹음 받아쓰기·요약 자동화",
+          "환자 정보는 내부 서버와 로컬 AI(faster-whisper, Gemma, Qwen)로만 처리, 외부 AI는 원장 승인 시에만 개인정보를 지운 글로 보내는 보안 구조 설계",
+          "설치형 배포, 매일 자동 백업, 원클릭 업데이트, 사용자별 권한·활동 기록",
+        ],
+      },
+      {
+        track: "ai",
+        label: "AI Agent Workflow",
+        items: [
+          "주제 발굴부터 리서치, 기획, 대본 초안까지 역할별 AI 에이전트로 나눈 콘텐츠 기획 워크플로 개발",
+          "평가 세트를 직접 만들어 프롬프트와 모델을 점수로 비교·선택",
+        ],
+      },
+      {
+        track: "ai",
+        label: "Intranet",
+        items: [
+          "연차 결재, 공지, 권한별 위키, 음성으로 요청하는 AI 비서 개발",
+          "원장·실장이 진행 상황과 도입 기준을 보는 개발 노트 운영",
+        ],
+      },
+    ],
+    tags: ["Hospital AX", "Local AI", "AI Agents", "Intranet"],
+  },
+  {
     id: "willa",
     tabLabel: "INFLUENTIAL",
     tabPeriod: "2026",
     period: "2026.03 — 2026.08",
     company: "인플루엔셜 · 윌라",
-    role: "오디오 엔지니어 · AX 프로젝트 리더",
-    tracks: ["sound", "ai"],
-    description: "오디오북·오디오드라마 녹음 연출 및 후반 제작, 제작 공정 자동화(AX) 담당",
+    role: "AX 담당 (사운드 엔지니어 겸임, 1인)",
+    tracks: ["ai", "sound"],
+    description: "오디오북·오디오드라마 제작 공정 자동화(AX)와 녹음 연출·후반 제작 담당",
     highlightGroups: [
       {
         track: "sound",
@@ -85,14 +127,25 @@ export const careers: Career[] = [
         track: "ai",
         label: "AX Pipeline",
         items: [
-          "검수, 컷 편집, 파일 정리, 자료 탐색 등 반복 공정 분석 및 개선 워크플로우 설계",
-          "Reaper 스크립트(Lua·Python)로 녹음 세션 준비 및 편집 공정 자동화",
-          "로컬 ASR·LLM 연계 음성 검수, 컷 편집, 대본·자료 정리 보조 도구 개발",
-          "Claude Code, Codex 등 AI 코딩 에이전트로 제작용 업무 도구 기획 및 구현",
+          "입사 한 달 만에 제작 도구를 만들어 에디터와 엔지니어가 실제 제작에 사용",
+          "오디오 도우미: 음성 인식(fast-whisper, WhisperX)으로 녹음본과 원고를 대조해 다르게 읽은 구간 자동 표시",
+          "원고 도우미: PDF 원고에서 캐릭터별 대사 추출(OCR 보완), 성우 비용 산정용 글자 수 자동 집계",
+          "Reaper 녹음 세션 자동화 스크립트(Lua, Python): 캐릭터별 트랙 분리, 대사 위치마다 녹음 자리 자동 배치",
+          "프롬프트 도우미(로컬 LLM Ollama), 도서 사이트 주간 순위를 모으는 순위 도우미",
+          "원고와 녹음 파일이 외부로 나가지 않도록 모든 도구를 로컬에서 실행",
+        ],
+      },
+      {
+        track: "ai",
+        label: "AX Pipeline Proposal",
+        items: [
+          "WelaaaON AX 파이프라인 기획: 작품 소싱부터 초벌 편집, BGM·효과음, 목소리 변환까지 6단계 설계",
+          "제작 현황 관리, 원고 정본화, 초벌 자동 편집 프로토타입 3종 개발",
+          "인력·장비·구독료 예산 승인 요청서 작성",
         ],
       },
     ],
-    tags: ["Voice Direction", "Mix · QC", "Sound PM", "AX Automation"],
+    tags: ["AX Automation", "Local ASR · LLM", "Voice Direction", "Sound PM"],
   },
   {
     id: "netmarble",
@@ -100,17 +153,17 @@ export const careers: Career[] = [
     tabPeriod: "2021—26",
     period: "2021.10 — 2026.02",
     company: "넷마블 컴퍼니",
-    role: "AI 오디오 엔지니어",
+    role: "R&D센터 생성형 AI팀 음성파트 · AI 오디오 엔지니어 (계약직 → 정규직 전환)",
     tracks: ["ai", "sound"],
-    description: "게임 개발용 음성 AI 도입 지원, 생성형 음성 모델 품질 분석, 음성 AI 서비스 기획 담당",
+    description: "게임 개발용 음성 AI 적용 지원, 생성형 음성 모델 품질 분석, 음성 AI 서비스 기획 담당",
     highlightGroups: [
       {
         track: "ai",
         label: "AI Solution & Tech Bridge",
         items: [
-          "기획팀, 사업부, 계열사 사운드팀과 협업해 장르별(RPG, 캐주얼 등) 음성 AI 도입 방안 제안 및 구축 지원",
+          "기획팀, 사업부, 계열 개발사 7곳 사운드팀과 협업해 장르별(RPG, 캐주얼 등) 음성 AI 활용 방안 제안 및 적용 지원",
           "기획 초기 단계용 AI 가이드 보이스 지원, 성우 녹음 전 캐릭터 톤·연출 검토 환경 마련",
-          "R&D 기술의 게임 개발 적용을 위한 가이드 및 기술 문서 작성, 비개발 직군 대상 사용 기준 정리",
+          "R&D 기술의 게임 개발 적용을 위한 가이드 및 기술 문서 작성, 현업 적용 회의에서 활용법·파라미터 노하우 안내",
         ],
       },
       {
@@ -120,15 +173,18 @@ export const careers: Career[] = [
           "TTS, VC, Singing Voice 모델 결과물의 청감·스펙트로그램 기반 품질 분석",
           "기계음, 아티팩트, 발음 불안정, 위상 왜곡, 톤 일관성 저하 등 문제 유형화 및 연구진 피드백",
           "상용화 기준 사운드 품질(QC) 기준 수립",
-          "학습용 음성 데이터 선별, 품질 검수, 라벨링",
+          "SOTA 모델과 자체 모델 청감 비교, 다국어 TTS·Singing Voice 결과의 언어별 발음·음색·감정 일관성 비교",
+          "학습용 음성 데이터 품질 검수·라벨링 기준 수립, Singing Voice용 보컬 데이터 MIDI 직접 작업",
         ],
       },
       {
         track: "sound",
         label: "Voice Design & Directing",
         items: [
-          "음색, 피치, 속도, 감정 파라미터 튜닝으로 AI 성우·게임 캐릭터 보이스 페르소나 설계",
-          "가상 아이돌 및 게임 캐릭터 성우 녹음 디렉팅, 테이크 선별, 편집 및 후반 작업",
+          "가상 성우 약 80명을 한국어·일본어·영어로 제작, 캐릭터 콘셉트부터 대사 톤·감정·말버릇까지 설계",
+          "계열사 코웨이 요청으로 한국어·영어 가상 성우 제작",
+          "게임 캐릭터 성우 녹음 디렉팅, 일본어 녹음 세션 진행, 테이크 선별 및 후반 작업",
+          "가상 아이돌 MAVE: 원본 음성 녹음·디렉팅부터 데이터셋, 라벨링, 파인튜닝 VC·TTS 결과물 제작, 소속사 납품까지 전담",
         ],
       },
       {
@@ -137,17 +193,55 @@ export const careers: Career[] = [
         items: [
           "사내 음성 AI 웹 서비스·애플리케이션 기획, 사용자 시나리오 및 기능 요구사항 설계",
           "Figma로 UI/UX 및 와이어프레임 설계, 개발팀과 구현 방향 협의",
-          "Flutter 기반 프론트엔드 개발 참여",
+          "Flutter를 독학해 프론트엔드 직접 구현",
         ],
       },
     ],
     tags: ["TTS · VC", "Model QC", "Persona Design", "Figma · Flutter"],
   },
   {
+    id: "robot",
+    tabLabel: "ROBOT SPORTS",
+    tabPeriod: "2018—20",
+    period: "2018.10 — 2019.03, 2019.12 — 2020.12",
+    company: "(사)대한로봇스포츠협회 · 국제로봇올림피아드위원회",
+    role: "기획 및 운영",
+    tracks: ["sound"],
+    description: "국제로봇올림피아드 기획·운영, 신규 종목 매뉴얼·사운드, 대회 중계·홍보 영상 제작",
+    highlightGroups: [
+      {
+        track: "sound",
+        label: "Planning",
+        items: [
+          "국제로봇올림피아드 기획 및 예산 편성, 종목 연구 및 규정 확립",
+          "국가지원사업·연구사업 유치를 위한 기획서 작성과 프레젠테이션",
+          "대회 유치를 위한 지자체 커뮤니케이션, 대회 문제(미션) 출제",
+        ],
+      },
+      {
+        track: "sound",
+        label: "Operation",
+        items: [
+          "오프라인 대회 운영, 진행요원·기록·심판진 관리와 교육",
+          "협회 및 대회 CS, 참가자 관리",
+        ],
+      },
+      {
+        track: "sound",
+        label: "Media & Sound",
+        items: [
+          "신규 종목 \"AI 축구\" 매뉴얼 작성과 사운드 담당, 온라인 대회 중계 시스템(OBS) 구성",
+          "대회 홈페이지 운영, 홍보 영상 제작(영상과 사운드)",
+        ],
+      },
+    ],
+    tags: ["Event Planning", "Operation", "OBS Broadcast", "Video · Sound"],
+  },
+  {
     id: "traum",
     tabLabel: "TRAUM S&C",
     tabPeriod: "2019",
-    period: "2019.06 — 2019.12",
+    period: "2019.06 — 2019.11",
     company: "트라움에스앤씨",
     role: "오디오 엔지니어",
     tracks: ["sound"],
@@ -183,7 +277,7 @@ export const careers: Career[] = [
 ];
 
 export const capabilities = {
-  practice: ["Sound Design", "Voice Direction", "Model QC", "Persona Design", "AX Automation"],
+  practice: ["AX Automation", "Model QC", "Persona Design", "Voice Direction", "Sound Design"],
   tools: [
     "Reaper, Pro Tools, Logic Pro",
     "Premiere Pro, CapCut",
@@ -346,6 +440,76 @@ export const appProjects: Project[] = [
     ],
     stack: ["Tauri 2", "React", "Rust", "TypeScript"],
     productUrl: "/lab/sokssok/",
+  },
+];
+
+export const serviceProjects: Project[] = [
+  {
+    id: "haedalbyeol",
+    order: "01",
+    title: "해·달·별 — AI 사주·타로·별자리 상담 웹 서비스",
+    shortTitle: "해·달·별",
+    category: "Web Service · AI Reading",
+    role: "Planning · Design · Development",
+    tracks: ["ai"],
+    thumbnail: "/assets/apps/haedalbyeol-main.jpg",
+    gallery: [
+      "/assets/apps/haedalbyeol-main.jpg",
+      "/assets/apps/haedalbyeol-tarot.jpg",
+      "/assets/apps/haedalbyeol-astro.jpg",
+    ],
+    galleryLabels: ["메인 · 세 가게", "월화 타로 · 카드 뽑기와 웹툰 풀이", "유화 별자리 · 생일 입력과 웹툰 풀이"],
+    noteTag: "개인 프로젝트 · 출시 준비 중",
+    summary:
+      "세 상담사가 같은 골목에서 사주·타로·별자리 가게를 여는 운세 웹 서비스입니다. 월화 타로는 손님이 직접 뽑은 카드로, 유화 별자리는 생일·태어난 시간·장소로 계산한 출생 차트로 AI 풀이를 만들어 웹툰과 총정리 보고서로 보여 줍니다. 혜화 사주는 개발 중입니다. 체험판은 실제 AI로 미리 받아 둔 풀이를 그대로 보여 줍니다.",
+    features: [
+      { name: "카드 뽑기 → 웹툰 풀이", description: "직접 고른 카드로 질문 8개를 풀고, 장면·대사가 있는 웹툰과 총정리 보고서로 정리" },
+      { name: "출생 차트 계산", description: "행성 위치·하우스는 NASA JPL DE440 천체력으로 코드가 계산하고, AI는 그 표를 근거로 풀이" },
+      { name: "결제 전 AI 0번", description: "카드 뽑기·정보 입력까지는 AI 없이, 결제 뒤에만 AI 풀이를 만드는 구조로 설계" },
+    ],
+    stack: ["JavaScript", "Node.js", "Claude", "NASA JPL DE440"],
+    demoUrl: "https://haru1332.github.io/haedalbyeol-demo/",
+  },
+];
+
+export type ServiceReader = {
+  id: string;
+  /** Shop label, e.g. "해의 가게". */
+  shop: string;
+  name: string;
+  role: string;
+  line: string;
+  image: string;
+  /** Shown as a small note when the shop is not open yet. */
+  status?: string;
+};
+
+/** The three shops of 해·달·별, shown beside the service card. */
+export const serviceReaders: ServiceReader[] = [
+  {
+    id: "hyehwa",
+    shop: "해의 가게",
+    name: "혜화 사주",
+    role: "맏언니 혜화",
+    line: "햇살 드는 한옥 방에서 태어난 날과 시로 명식을 세우고, 한 해의 흐름과 타고난 결을 풀어 줍니다.",
+    image: "/assets/apps/haedalbyeol-face-hyehwa.webp",
+    status: "개발 중",
+  },
+  {
+    id: "wolhwa",
+    shop: "달의 가게",
+    name: "월화 타로",
+    role: "둘째 월화",
+    line: "고민을 고르면 오늘 볼 질문 8개를 정하고, 질문마다 78장 중에서 직접 카드를 뽑아 웹툰과 총정리 보고서로 읽어 줍니다.",
+    image: "/assets/apps/haedalbyeol-face-wolhwa.webp",
+  },
+  {
+    id: "yuhwa",
+    shop: "별의 가게",
+    name: "유화 별자리",
+    role: "막내 유화",
+    line: "태어난 날의 하늘을 펼친 출생 차트에서 별을 하나씩 이어 가며 서양 점성술로 읽어 줍니다. 태어난 시간을 몰라도 볼 수 있습니다.",
+    image: "/assets/apps/haedalbyeol-face-yuhwa.webp",
   },
 ];
 
@@ -554,7 +718,7 @@ export const compositionChannel: Channel = {
 export const profile = {
   nameKo: "김현수",
   nameEn: "Hyeonsu Kim",
-  roleLine: "Sound Designer · AI/AX",
+  roleLine: "AI/AX · Sound Designer",
   email: "haru.info.official@gmail.com",
   github: "https://github.com/Haru1332",
 };

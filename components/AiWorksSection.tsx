@@ -18,9 +18,11 @@ type AiWorksSectionProps = {
   countLabel: React.ReactNode;
   projects: Project[];
   link?: { href: string; label: string };
+  /** Extra panel placed in the grid after the cards. */
+  aside?: React.ReactNode;
 };
 
-export function AiWorksSection({ id, index, kicker, heading, subtitle, countLabel, projects, link }: AiWorksSectionProps) {
+export function AiWorksSection({ id, index, kicker, heading, subtitle, countLabel, projects, link, aside }: AiWorksSectionProps) {
   return (
     <section className={styles.workSection} id={id} data-track="ai" aria-labelledby={`${id}-title`}>
       <header className={styles.sectionHeader}>
@@ -39,6 +41,7 @@ export function AiWorksSection({ id, index, kicker, heading, subtitle, countLabe
 
       <div className={styles.caseStudyGrid}>
         {projects.map((project) => <CaseStudyCard key={project.id} project={project} />)}
+        {aside}
       </div>
     </section>
   );
@@ -148,6 +151,17 @@ function CaseStudyCard({ project }: { project: Project }) {
         {project.productUrl && (
           <a href={assetPath(project.productUrl)} className={styles.caseStudyProductLink}>
             제품 페이지 보기 <span aria-hidden="true">→</span>
+          </a>
+        )}
+        {project.demoUrl && (
+          <a
+            href={project.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.caseStudyDemoLink}
+            onClick={() => track("demo_open", { title: project.shortTitle })}
+          >
+            체험판 해 보기 <span aria-hidden="true">↗</span>
           </a>
         )}
         {project.tools && (

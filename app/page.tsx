@@ -6,8 +6,9 @@ import { ContactSection } from "@/components/ContactSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { ServiceReaders } from "@/components/ServiceReaders";
 import { WorksSection } from "@/components/WorksSection";
-import { aiProjects, appProjects, compositionChannel, contentChannels, soundProjects } from "@/content/portfolio";
+import { aiProjects, appProjects, compositionChannel, contentChannels, serviceProjects, serviceReaders, soundProjects } from "@/content/portfolio";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -20,8 +21,18 @@ export default function Home() {
         <Hero />
         <CareerSection />
         <AiWorksSection
-          id="apps"
+          id="ai-services"
           index="03"
+          kicker="Personal AI Services · Coming Soon"
+          heading="개인 AI 서비스 개발"
+          subtitle="타로·점성술·사주 상담 서비스를 직접 기획하고 개발하고 있습니다. 아직 출시 전이라, 실제 AI로 미리 받아 둔 결과로 만든 체험판을 열어 볼 수 있습니다."
+          countLabel={<>AI<br />Services</>}
+          projects={serviceProjects}
+          aside={<ServiceReaders readers={serviceReaders} />}
+        />
+        <AiWorksSection
+          id="apps"
+          index="04"
           kicker="Personal Apps"
           heading="개인 앱 개발"
           subtitle="평소 불편했던 작업을 해결하려고 만든 앱입니다. 기획, 디자인, 개발을 혼자 했고 개발에는 Claude Code를 썼습니다."
@@ -31,18 +42,18 @@ export default function Home() {
         />
         <AiWorksSection
           id="ai-works"
-          index="04"
+          index="05"
           kicker="AI · AX Works"
           heading="AI · AX 작업"
           subtitle="실무에서 반복되던 작업을 줄이려고 개인적으로 기획·개발한 프로젝트입니다. 회사의 공식 자료는 아닙니다."
           countLabel={<>AI · AX<br />Case Studies</>}
           projects={aiProjects}
         />
-        <AiContentSection id="ai-content" index="05" channels={contentChannels} />
-        <CompositionSection id="composition" index="06" channel={compositionChannel} />
+        <AiContentSection id="ai-content" index="06" channels={contentChannels} />
+        <CompositionSection id="composition" index="07" channel={compositionChannel} />
         <WorksSection
           id="sound-works"
-          index="07"
+          index="08"
           kicker="Sound Design Works"
           heading="사운드 디자인 작업"
           countLabel={<>Full Sound<br />Design</>}
