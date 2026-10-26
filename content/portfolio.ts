@@ -328,8 +328,8 @@ export const aiProjects: Project[] = [
   {
     id: "willa-toolkit",
     order: "01",
-    title: "월라 업무 지원 툴킷",
-    shortTitle: "월라 업무 지원 툴킷",
+    title: "윌라 업무 지원 툴킷",
+    shortTitle: "윌라 업무 지원 툴킷",
     category: "Internal Tool Suite",
     role: "Tool Design · Python Development",
     tracks: ["ai"],
@@ -381,6 +381,7 @@ export const aiProjects: Project[] = [
     category: "Generative Audio R&D",
     role: "AI Voice · Sound Design · Mix",
     tracks: ["ai", "sound"],
+    noteTag: "개인 프로젝트 · 음성 AI R&D",
     youtubeUrl: "https://youtu.be/tyBvB5WCNko",
   },
 ];
