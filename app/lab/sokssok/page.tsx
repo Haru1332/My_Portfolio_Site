@@ -13,7 +13,7 @@ const jua = localFont({ src: "../fonts/Jua-Regular.subset.woff2", variable: "--f
 const gowun = localFont({ src: "../fonts/GowunDodum-Regular.subset.woff2", variable: "--font-gowun", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "쏙쏙 — 흩어진 파일을 제자리에 | Haru Lab",
+  title: "쏙쏙: 흩어진 파일을 제자리에 | Haru Lab",
   description: "이름 정리, 폴더 분류, 중복 정리, 파일 변환까지. 미리보기와 되돌리기를 지원하는 Windows 파일 정리 프로그램.",
 };
 
@@ -21,10 +21,10 @@ const media = (name: string) => `/assets/products/sokssok/${name}`;
 const betaMail = labProducts.find((product) => product.id === "sokssok")!.mail;
 
 const tabs: FeatureTab[] = [
-  { id: "scan", label: "폴더 고르기", description: "폴더 안의 사진·영상·문서를 바로 파악합니다", video: media("home.mp4"), poster: media("home-poster.jpg") },
+  { id: "scan", label: "폴더 고르기", description: "폴더 안의 사진, 영상, 문서를 바로 파악합니다", video: media("home.mp4"), poster: media("home-poster.jpg") },
   { id: "rename", label: "이름 정리", description: "‘KakaoTalk_’, ‘(1)’ 같은 군더더기를 한 번에 지웁니다", video: media("rename.mp4"), poster: media("rename-poster.jpg") },
-  { id: "sort", label: "폴더로 분류", description: "종류·연도·월 기준으로 폴더를 나눕니다", video: media("sort.mp4"), poster: media("sort-poster.jpg") },
-  { id: "dupes", label: "중복 · 버전", description: "중복 파일과 여러 버전 파일을 하나로 정리합니다", video: media("ver.mp4"), poster: media("ver-poster.jpg") },
+  { id: "sort", label: "폴더로 분류", description: "종류, 연도, 월 기준으로 폴더를 나눕니다", video: media("sort.mp4"), poster: media("sort-poster.jpg") },
+  { id: "dupes", label: "중복, 버전", description: "중복 파일과 여러 버전 파일을 하나로 정리합니다", video: media("ver.mp4"), poster: media("ver-poster.jpg") },
 ];
 
 const trust = ["실행 전 미리보기", "언제든 되돌리기", "오프라인 동작", "간편 설치"];
@@ -55,7 +55,7 @@ export default function SokssokPage() {
           <div className={styles.heroCopy}>
             <p className={styles.badge}>
               <Image src={assetPath(media("icon.svg"))} alt="" width={22} height={22} className={styles.productIcon} />
-              쏙쏙 · Windows 베타
+              쏙쏙 Windows 베타
             </p>
             <h1>흩어진 파일을<br /><em>제자리에 쏙쏙</em></h1>
             <p className={styles.lead}>이름 정리, 폴더 분류, 중복 정리까지 클릭 몇 번이면 끝납니다.</p>
@@ -100,7 +100,7 @@ export default function SokssokPage() {
             <article className={styles.card}>
               <div className={styles.cardText}>
                 <h3>파일 변환</h3>
-                <p>이미지·영상·문서 형식을 원본 그대로 두고 변환합니다.</p>
+                <p>이미지, 영상, 문서 형식을 원본 그대로 두고 변환합니다.</p>
               </div>
               <Image src={assetPath(media("card-convert.png"))} alt="이미지 형식 변환 화면" width={820} height={460} className={`${styles.cardMedia} ${styles.cardMediaNatural}`} />
             </article>

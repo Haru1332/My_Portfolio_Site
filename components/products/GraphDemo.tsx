@@ -106,7 +106,7 @@ function PlanCard({ topic, shown, onHover }: { topic: Topic; shown: number; onHo
       {shown === 0 && <div className={styles.planSkeleton} aria-hidden="true"><i /><i /><i /><i /></div>}
       <h4 className={styles.planHeadline} data-on={on(1)}>{topic.plan.headline}</h4>
       <div className={styles.planBlock} data-on={on(2)}>
-        <p className={styles.planBlockTitle}>후킹 <small>0:00–0:15</small></p>
+        <p className={styles.planBlockTitle}>후킹 <small>0:00~0:15</small></p>
         <p>“{topic.plan.hook.text}”<Cites refs={topic.plan.hook.refs} onHover={onHover} /></p>
       </div>
       <div className={styles.planBlock} data-on={on(3)}>
@@ -133,7 +133,7 @@ function PlanCard({ topic, shown, onHover }: { topic: Topic; shown: number; onHo
           ))}
         </ul>
       </div>
-      <p className={styles.planCheck} data-on={on(5)}><span>✓</span> 발행 전 점검 · 근거 없는 수치 0개 · 과장 표현 0개</p>
+      <p className={styles.planCheck} data-on={on(5)}><span>✓</span> 발행 전 점검, 근거 없는 수치 0개, 과장 표현 0개</p>
     </div>
   );
 }

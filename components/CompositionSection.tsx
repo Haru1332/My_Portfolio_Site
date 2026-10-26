@@ -26,7 +26,7 @@ export function CompositionSection({ id, index, channel }: { id: string; index: 
         <div className={styles.compositionContent}>
           <p className={styles.kicker}><span>{index}</span> Composition</p>
           <h2 id={`${id}-title`}>{channel.name}</h2>
-          <p className={styles.compositionSubtitle}>YouTube Channel · Piano · Self-composed</p>
+          <p className={styles.compositionSubtitle}>YouTube Channel, Piano, Self-composed</p>
           <p className={styles.channelAiScope}>{channel.aiScope}</p>
           <p className={styles.compositionText}>{channel.description}</p>
           <p className={styles.compositionStat}>{channel.stat}</p>

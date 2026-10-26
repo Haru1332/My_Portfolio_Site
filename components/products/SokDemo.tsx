@@ -36,7 +36,7 @@ export function SokDemo() {
   }[phase];
 
   const status = {
-    messy: "다운로드 폴더 · 파일 8개",
+    messy: "다운로드 폴더, 파일 8개",
     renamed: "이름 8개를 정리했습니다",
     sorted: "폴더 3개로 분류했습니다",
   }[phase];

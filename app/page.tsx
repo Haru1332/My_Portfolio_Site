@@ -23,9 +23,9 @@ export default function Home() {
         <AiWorksSection
           id="ai-services"
           index="03"
-          kicker="Personal AI Services · Coming Soon"
+          kicker="Personal AI Services (Coming Soon)"
           heading="개인 AI 서비스 개발"
-          subtitle="타로·점성술·사주 상담 서비스를 직접 기획하고 개발하고 있습니다. 아직 출시 전이라, 실제 AI로 미리 받아 둔 결과로 만든 체험판을 열어 볼 수 있습니다."
+          subtitle="타로, 점성술, 사주 상담 서비스를 직접 기획하고 개발하고 있습니다. 아직 출시 전이라, 실제 AI로 미리 받아 둔 결과로 만든 체험판을 열어 볼 수 있습니다."
           countLabel={<>AI<br />Services</>}
           projects={serviceProjects}
           aside={<ServiceReaders readers={serviceReaders} />}
@@ -43,10 +43,10 @@ export default function Home() {
         <AiWorksSection
           id="ai-works"
           index="05"
-          kicker="AI · AX Works"
-          heading="AI · AX 작업"
-          subtitle="실무에서 반복되던 작업을 줄이려고 개인적으로 기획·개발한 프로젝트입니다. 회사의 공식 자료는 아닙니다."
-          countLabel={<>AI · AX<br />Case Studies</>}
+          kicker="AI/AX Works"
+          heading="AI/AX 작업"
+          subtitle="실무에서 반복되던 작업을 줄이려고 개인적으로 기획하고 개발한 프로젝트입니다. 회사의 공식 자료는 아닙니다."
+          countLabel={<>AI/AX<br />Case Studies</>}
           projects={aiProjects}
         />
         <AiContentSection id="ai-content" index="06" channels={contentChannels} />

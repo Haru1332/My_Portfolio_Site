@@ -8,8 +8,8 @@ import { assetPath } from "@/lib/asset-path";
 import styles from "@/components/products/product.module.css";
 
 export const metadata: Metadata = {
-  title: "이음 — 내 노트에서 시작하는 콘텐츠 제작 | Haru Lab",
-  description: "옵시디언 노트와 외부 자료를 근거로 주제 추천, 대본 작성, YouTube·Instagram 댓글 관리까지."
+  title: "이음: 내 노트에서 시작하는 콘텐츠 제작 | Haru Lab",
+  description: "옵시디언 노트와 외부 자료를 근거로 주제 추천, 대본 작성, YouTube, Instagram 댓글 관리까지."
 };
 
 const media = (name: string) => `/assets/products/creator/${name}`;
@@ -22,13 +22,13 @@ const tabs: FeatureTab[] = [
   { id: "comments", label: "댓글 답글", description: "댓글마다 내 말투로 답글 초안을 준비합니다", video: media("comments.mp4"), poster: media("comments-poster.jpg") },
 ];
 
-const trust = ["YouTube · Instagram 연동", "출처 자동 대조", "승인 후 게시", "추가 요금 없음"];
+const trust = ["YouTube, Instagram 연동", "출처 자동 대조", "승인 후 게시", "추가 요금 없음"];
 
 const principles = [
   { icon: "M9 12l2 2 4-4M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z", title: "근거 확인", text: "출처가 없는 수치는 따로 표시합니다." },
   { icon: "M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0", title: "승인 후 게시", text: "모든 답글은 확인을 거쳐야 게시됩니다." },
-  { icon: "M6 11h12v10H6zM8 11V7a4 4 0 018 0v4", title: "공식 API 연동", text: "YouTube·Instagram 공식 API만 사용합니다." },
-  { icon: "M4 7h16v10H4zM4 11h16M8 15h3", title: "추가 요금 없음", text: "사용 중인 Claude·ChatGPT 구독으로 동작합니다." },
+  { icon: "M6 11h12v10H6zM8 11V7a4 4 0 018 0v4", title: "공식 API 연동", text: "YouTube, Instagram 공식 API만 사용합니다." },
+  { icon: "M4 7h16v10H4zM4 11h16M8 15h3", title: "추가 요금 없음", text: "사용 중인 Claude, ChatGPT 구독으로 동작합니다." },
 ];
 
 export default function IeumPage() {
@@ -49,7 +49,7 @@ export default function IeumPage() {
       <main>
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <p className={styles.badge}><span /> 이음 · 베타</p>
+            <p className={styles.badge}><span /> 이음 베타</p>
             <h1>내 노트에서 시작하는<br /><em>콘텐츠 제작</em></h1>
             <p className={styles.lead}>옵시디언 노트와 외부 자료를 근거로 주제를 고르고, 대본을 쓰고, 댓글에 답하세요.</p>
             <div className={styles.ctas}>
