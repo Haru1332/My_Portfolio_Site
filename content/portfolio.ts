@@ -381,7 +381,7 @@ export const aiProjects: Project[] = [
     category: "Generative Audio R&D",
     role: "AI Voice · Sound Design · Mix",
     tracks: ["ai", "sound"],
-    noteTag: "개인 프로젝트 · 음성 AI R&D",
+    noteTag: "개인 음성 AI R&D 프로젝트",
     youtubeUrl: "https://youtu.be/tyBvB5WCNko",
   },
 ];
