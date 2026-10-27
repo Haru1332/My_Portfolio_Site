@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { Project } from "@/content/portfolio";
+import { LandingCover } from "@/components/LandingCovers";
 import { assetPath } from "@/lib/asset-path";
 import { track } from "@/lib/analytics";
 import { getYouTubeEmbedUrl, getYouTubeThumbnailUrl } from "@/lib/youtube";
@@ -61,7 +62,9 @@ function CaseStudyCard({ project }: { project: Project }) {
   return (
     <article className={styles.caseStudyItem}>
       <div className={styles.caseStudyMedia}>
-        {embedUrl ? (
+        {project.cover ? (
+          <LandingCover cover={project.cover} />
+        ) : embedUrl ? (
           isPlaying ? (
             <iframe
               src={embedUrl}
@@ -153,6 +156,17 @@ function CaseStudyCard({ project }: { project: Project }) {
             제품 페이지 보기 <span aria-hidden="true">→</span>
           </a>
         )}
+        {project.siteUrl && (
+          <a
+            href={project.siteUrl}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className={styles.caseStudyDemoLink}
+            onClick={() => track("site_open", { title: project.shortTitle })}
+          >
+            실제 페이지 보기 <span aria-hidden="true">↗</span>
+          </a>
+        )}
         {project.demoUrl && (
           <a
             href={project.demoUrl}
@@ -177,3 +191,4 @@ function CaseStudyCard({ project }: { project: Project }) {
     </article>
   );
 }
+

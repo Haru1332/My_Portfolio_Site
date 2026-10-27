@@ -230,11 +230,11 @@
 .readerInfo h3 { font-size: clamp(18px, 1.6vw, 22px); }
 .readerInfo p { color: #b2b7b4; font-size: 13px; line-height: 1.7; text-wrap: pretty; }
 .readerSoon { padding: 2px 7px; border: 1px solid var(--line); color: #8f9592; font-size: 10px; }
-.caseStudyProductLink { margin-top: 20px; width: fit-content; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border: 1px solid color-mix(in srgb, var(--accent-ai) 55%, var(--line-strong)); color: var(--ivory); font-size: 12px; letter-spacing: .04em; transition: color 220ms ease, background 220ms ease, border-color 220ms ease; }
-.caseStudyProductLink:hover, .caseStudyProductLink:focus-visible { color: var(--black); background: var(--ivory); border-color: var(--ivory); }
-.caseStudyDemoLink { margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 22px; background: var(--ivory); border: 1px solid var(--ivory); color: var(--black); font-size: 15px; font-weight: 600; letter-spacing: .02em; transition: background 220ms ease, color 220ms ease; }
+.caseStudyProductLink { margin-top: 20px; width: fit-content; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border: 1px solid var(--cta-yellow); background: var(--cta-yellow); color: var(--black); font-size: 12px; font-weight: 600; letter-spacing: .04em; transition: color 220ms ease, background 220ms ease, border-color 220ms ease; }
+.caseStudyProductLink:hover, .caseStudyProductLink:focus-visible { color: var(--cta-yellow); background: transparent; border-color: var(--cta-yellow); }
+.caseStudyDemoLink { margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 22px; background: var(--cta-yellow); border: 1px solid var(--cta-yellow); color: var(--black); font-size: 15px; font-weight: 600; letter-spacing: .02em; transition: background 220ms ease, color 220ms ease; }
 .caseStudyDemoLink span { font-size: 18px; }
-.caseStudyDemoLink:hover, .caseStudyDemoLink:focus-visible { background: transparent; color: var(--ivory); }
+.caseStudyDemoLink:hover, .caseStudyDemoLink:focus-visible { background: transparent; color: var(--cta-yellow); }
 .caseStudyTools { margin-top: 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
 .caseStudyToolChip { min-width: 0; padding: 10px 12px; border: 1px solid var(--line); background: rgba(255,255,255,.015); }
 .caseStudyToolHead { margin: 0; display: flex; align-items: center; gap: 8px; }

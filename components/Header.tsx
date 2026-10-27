@@ -9,6 +9,7 @@ const navigation = [
   ["ai-services", "AI Services"],
   ["apps", "Apps"],
   ["ai-works", "AI/AX"],
+  ["landing", "Landing"],
   ["ai-content", "AI Content"],
   ["composition", "Composition"],
   ["sound-works", "Sound Design"],

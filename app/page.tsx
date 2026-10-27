@@ -8,7 +8,7 @@ import { Hero } from "@/components/Hero";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ServiceReaders } from "@/components/ServiceReaders";
 import { WorksSection } from "@/components/WorksSection";
-import { aiProjects, appProjects, compositionChannel, contentChannels, serviceProjects, serviceReaders, soundProjects } from "@/content/portfolio";
+import { aiProjects, appProjects, landingProjects, compositionChannel, contentChannels, serviceProjects, serviceReaders, soundProjects } from "@/content/portfolio";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -49,11 +49,20 @@ export default function Home() {
           countLabel={<>AI/AX<br />Case Studies</>}
           projects={aiProjects}
         />
-        <AiContentSection id="ai-content" index="06" channels={contentChannels} />
-        <CompositionSection id="composition" index="07" channel={compositionChannel} />
+        <AiWorksSection
+          id="landing"
+          index="06"
+          kicker="Recruiting Landing Pages"
+          heading="채용 랜딩페이지"
+          subtitle="굿모나의원 재직 중 업무로 만든 회사 공식 채용 페이지입니다. 사람인과 잡코리아 채용공고에서 이 페이지로 연결됩니다. 페이지와 이미지의 권리는 회사에 있어, 여기서는 만든 내용만 소개하고 실제 페이지는 링크로 엽니다."
+          countLabel={<>Landing<br />Pages</>}
+          projects={landingProjects}
+        />
+        <AiContentSection id="ai-content" index="07" channels={contentChannels} />
+        <CompositionSection id="composition" index="08" channel={compositionChannel} />
         <WorksSection
           id="sound-works"
-          index="08"
+          index="09"
           kicker="Sound Design Works"
           heading="사운드 디자인 작업"
           countLabel={<>Full Sound<br />Design</>}

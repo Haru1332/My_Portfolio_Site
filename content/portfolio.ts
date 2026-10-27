@@ -45,6 +45,17 @@ export type Project = {
   productUrl?: string;
   /** External link to a hands-on demo, opened in a new tab. */
   demoUrl?: string;
+  /** Company-owned live site, linked (never copied or embedded). Opens in a new tab. */
+  siteUrl?: string;
+  /** Text-only cover drawn with this site's own styles, used instead of screenshots of company work. */
+  cover?: ProjectCover;
+};
+
+export type ProjectCover = {
+  look: "sticker" | "hud";
+  lines: string[];
+  chips: string[];
+  caption: string;
 };
 
 export type AppFeature = {
@@ -383,6 +394,53 @@ export const aiProjects: Project[] = [
     tracks: ["ai", "sound"],
     noteTag: "개인 음성 AI R&D 프로젝트",
     youtubeUrl: "https://youtu.be/tyBvB5WCNko",
+  },
+];
+
+// 재직 중 업무로 만든 회사 공식 채용 페이지. 권리는 회사에 있으므로 그림·코드를 옮기지 않고
+// 공개된 주소로만 연결한다(사용자 근로계약 제10조·제13조, 2026-10-27).
+export const landingProjects: Project[] = [
+  {
+    id: "goodmona-brand-pm-recruit",
+    order: "01",
+    title: "굿모나 커머스팀 브랜드 PM 채용 랜딩페이지",
+    shortTitle: "브랜드 PM 채용 랜딩페이지",
+    category: "Recruiting Landing Page",
+    role: "Planning, Design, Development, Interaction",
+    tracks: ["ai"],
+    noteTag: "재직 중 1인 제작, 회사 공식 페이지",
+    summary:
+      "샴푸 상품기획 브랜드 PM 채용공고에서 연결되는 랜딩페이지입니다. 지원 과정을 레트로 픽셀 게임처럼 구성해, 타이틀 화면부터 월드맵, 미니게임, 참가 신청까지 한 편의 게임을 하듯 읽히게 했습니다. 기획부터 디자인, 개발, 채용공고 이미지까지 혼자 만들었습니다.",
+    features: [
+      { name: "게임 HUD", description: "스크롤할수록 위 메뉴의 레벨과 경험치 막대가 오르고, 구역에 들어설 때 레벨업 알림" },
+      { name: "월드맵", description: "데스크톱은 화면을 고정한 채 캐릭터가 길을 따라 걷는 가로 진행, 휴대폰은 세로 목록" },
+      { name: "대화 연출", description: "대사가 한 줄씩 타자로 나오고, 사진이 픽셀 캐릭터로 바뀌는 변환 장면" },
+      { name: "미니게임과 지원", description: "끌리는 쪽을 고르면 스탯이 쌓이는 6문항 테스트, 어디서 눌러도 그 자리에 뜨는 지원 팝업" },
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "GSAP", "Lenis", "Galmuri", "Cloudflare Pages"],
+    siteUrl: "https://goodmona-team.pages.dev/shampoo/",
+    cover: { look: "hud", lines: ["Brand PM", "Press Start"], chips: ["LV 1", "LV 100"], caption: "Recruiting Page 01" },
+  },
+  {
+    id: "goodmona-marketing-recruit",
+    order: "02",
+    title: "굿모나 마케팅팀 채용 랜딩페이지",
+    shortTitle: "마케팅팀 채용 랜딩페이지",
+    category: "Recruiting Landing Page",
+    role: "Planning, Design, Development, Interaction",
+    tracks: ["ai"],
+    noteTag: "재직 중 1인 제작, 회사 공식 페이지",
+    summary:
+      "마케터 채용공고에서 연결되는 랜딩페이지입니다. 병원 채널의 활기를 장난스럽고 개성 있는 무드로 풀었습니다. 첫 화면의 숫자 영상과 끌어서 옮기는 스티커, 스크롤에 따라 바뀌는 구역 색으로 팀의 분위기를 먼저 보여 줍니다. 기획부터 디자인, 개발, 채용공고 이미지까지 혼자 만들었습니다.",
+    features: [
+      { name: "첫 화면 모션", description: "영상 가운데에서 스티커가 튀어나와 자리를 잡고, 데스크톱에서는 직접 끌어서 옮길 수 있음" },
+      { name: "스크롤 연출", description: "구역마다 바탕색이 바뀌고, 이력서가 적히다 빨리감기되는 장면을 스크롤에 맞춰 재생" },
+      { name: "참여형 게임", description: "채널 영상 두 개 중 더 많이 본 쪽을 고르는 3문제 감 테스트" },
+      { name: "모바일과 접근성", description: "휴대폰은 가벼운 영상과 이미지, 고정 장면 대신 자동 재생. 동작 줄이기 설정이면 정지 화면" },
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "GSAP", "Lenis", "HyperFrames", "Cloudflare Pages"],
+    siteUrl: "https://goodmona-team.pages.dev/",
+    cover: { look: "sticker", lines: ["Marketing", "Team"], chips: ["Drag", "Scroll", "Motion", "Play"], caption: "Recruiting Page 02" },
   },
 ];
 
